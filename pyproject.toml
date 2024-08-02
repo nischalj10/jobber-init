@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "jobber"
+version = "0.1.0"
+description = ""
+authors = ["nischalj10 <nischalj10@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.8"
+litellm = "^1.42.9"
+pydantic = "^2.8.2"
+pytest-playwright = "^0.5.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
