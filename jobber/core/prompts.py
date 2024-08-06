@@ -1,6 +1,8 @@
 LLM_PROMPTS = {
     "USER_AGENT_PROMPT": """A proxy for the user for executing the user commands.""",
+
     "BROWSER_NAV_EXECUTOR_PROMPT": """A proxy for the user for executing the user commands.""",
+    
     "PLANNER_AGENT_PROMPT": """You are a web automation task planner. You will receive tasks from the user and will work with a naive helper to accomplish it.
     You will think step by step and break down the tasks into sequence of simple subtasks. Subtasks will be delegated to the helper to execute.
 
@@ -58,6 +60,7 @@ LLM_PROMPTS = {
     Remember: you are a very very persistent planner who will try every possible strategy to accomplish the task perfectly.
     Revise search query if needed, ask for more information if needed, and always verify the results before terminating the task.
     Some basic information about the user: $basic_user_information""",
+
     "BROWSER_AGENT_PROMPT": """You will perform web navigation tasks, which may include logging into websites and interacting with any web content using the functions made available to you.
    Use the provided DOM representation for element location or text summarization.
    Interact with pages using only the "mmid" attribute in DOM elements.
@@ -77,18 +80,34 @@ LLM_PROMPTS = {
    Do not provide any mmid values in your response.
    Important: If you encounter an issues or is unsure how to proceed, simply ##TERMINATE TASK## and provide a detailed summary of the exact issue encountered.
    Do not repeat the same action multiple times if it fails. Instead, if something did not work after a few attempts, terminate the task.""",
+
+
     "VERFICATION_AGENT": """Given a conversation and a task, your task is to analyse the conversation and tell if the task is completed. If not, you need to tell what is not completed and suggest next steps to complete the task.""",
+    
+
     "ENTER_TEXT_AND_CLICK_PROMPT": """This skill enters text into a specified element and clicks another element, both identified by their DOM selector queries.
    Ideal for seamless actions like submitting search queries, this integrated approach ensures superior performance over separate text entry and click commands.
    Successfully completes when both actions are executed without errors, returning True; otherwise, it provides False or an explanatory message of any failure encountered.
    Always prefer this dual-action skill for tasks that combine text input and element clicking to leverage its streamlined operation.""",
+
+
     "OPEN_URL_PROMPT": """Opens a specified URL in the web browser instance. Returns url of the new page if successful or appropriate error message if the page could not be opened.""",
+
+
     "GO_BACK_PROMPT": """Goes back to previous page in the browser history. Useful when correcting an incorrect action that led to a new page or when needing to revisit a previous page for information. Returns the full URL of the page after the back action is performed.""",
+
+
     "COMMAND_EXECUTION_PROMPT": """Execute the user task "$command" $current_url_prompt_segment""",
+
+
     "GET_USER_INPUT_PROMPT": """Get clarification by asking the user or wait for user to perform an action on webpage. This is useful e.g. when you encounter a login or captcha and requires the user to intervene. This skill will also be useful when task is ambigious and you need more clarification from the user (e.g. ["which source website to use to accomplish a task"], ["Enter your credentials on your webpage and type done to continue"]). Use this skill very sparingly and only when absolutely needed.""",
+
+
     "GET_DOM_WITHOUT_CONTENT_TYPE_PROMPT": """Retrieves the DOM of the current web browser page.
    Each DOM element will have an \"mmid\" attribute injected for ease of DOM interaction.
    Returns a minified representation of the HTML DOM where each HTML DOM Element has an attribute called \"mmid\" for ease of DOM query selection. When \"mmid\" attribute is available, use it for DOM query selectors.""",
+    
+
     # This one below had all three content types including input_fields
     "GET_DOM_WITH_CONTENT_TYPE_PROMPT": """Retrieves the DOM of the current web site based on the given content type.
    The DOM representation returned contains items ordered in the same way they appear on the page. Keep this in mind when executing user requests that contain ordinals or numbered items.
@@ -96,28 +115,56 @@ LLM_PROMPTS = {
    input_fields - returns a JSON string containing a list of objects representing text input html elements with mmid attribute. Use this strictly for interaction purposes with text input fields.
    all_fields - returns a JSON string containing a list of objects representing all interactive elements and their attributes with mmid attribute. Use this strictly to identify and interact with any type of elements on page.
    If information is not available in one content type, you must try another content_type.""",
+
+
     "GET_ACCESSIBILITY_TREE": """Retrieves the accessibility tree of the current web site.
    The DOM representation returned contains items ordered in the same way they appear on the page. Keep this in mind when executing user requests that contain ordinals or numbered items.""",
+
+    
     "CLICK_PROMPT": """Executes a click action on the element matching the given mmid attribute value. It is best to use mmid attribute as the selector.
    Returns Success if click was successful or appropriate error message if the element could not be clicked.""",
+
+    
     "CLICK_PROMPT_ACCESSIBILITY": """Executes a click action on the element a name and role.
    Returns Success if click was successful or appropriate error message if the element could not be clicked.""",
+
+    
     "GET_URL_PROMPT": """Get the full URL of the current web page/site. If the user command seems to imply an action that would be suitable for an already open website in their browser, use this to fetch current website URL.""",
+
+    
     "ENTER_TEXT_PROMPT": """Single enter given text in the DOM element matching the given mmid attribute value. This will only enter the text and not press enter or anything else.
    Returns Success if text entry was successful or appropriate error message if text could not be entered.""",
+
+    
     "CLICK_BY_TEXT_PROMPT": """Executes a click action on the element matching the text. If multiple text matches are found, it will click on all of them. Use this as last resort when all else fails.""",
+
+    
     "BULK_ENTER_TEXT_PROMPT": """Bulk enter text in multiple DOM fields. To be used when there are multiple fields to be filled on the same page.
    Enters text in the DOM elements matching the given mmid attribute value.
    The input will receive a list of objects containing the DOM query selector and the text to enter.
    This will only enter the text and not press enter or anything else.
    Returns each selector and the result for attempting to enter text.""",
+
+    
     "PRESS_KEY_COMBINATION_PROMPT": """Presses the given key on the current web page.
    This is useful for pressing the enter button to submit a search query, PageDown to scroll, ArrowDown to change selection in a focussed list etc.""",
+
+    
     "ADD_TO_MEMORY_PROMPT": """"Save any information that you may need later in this term memory. This could be useful for saving things to do, saving information for personalisation, or even saving information you may need in future for efficiency purposes E.g. Remember to call John at 5pm, This user likes Tesla company and considered buying shares, The user enrollment form is available in <url> etc.""",
+
+    
     "HOVER_PROMPT": """Hover on a element with the given mmid attribute value. Hovering on an element can reveal additional information such as a tooltip or trigger a dropdown menu with different navigation options.""",
+
+    
     "GET_MEMORY_PROMPT": """Retrieve all the information previously stored in the memory""",
+
+    
     "PRESS_ENTER_KEY_PROMPT": """Presses the enter key in the given html field. This is most useful on text input fields.""",
+
+   
     "EXTRACT_TEXT_FROM_PDF_PROMPT": """Extracts text from a PDF file hosted at the given URL.""",
+    
+    
     "BROWSER_AGENT_NO_SKILLS_PROMPT": """You are an autonomous agent tasked with performing web navigation on a Playwright instance, including logging into websites and executing other web-based actions.
    You will receive user commands, formulate a plan and then write the PYTHON code that is needed for the task to be completed.
    It is possible that the code you are writing is for one step at a time in the plan. This will ensure proper execution of the task.

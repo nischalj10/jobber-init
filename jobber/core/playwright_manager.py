@@ -1,11 +1,17 @@
 import os
 import tempfile
+import time
 from typing import Union
 
 from playwright.async_api import BrowserContext, Page, Playwright
 from playwright.async_api import async_playwright as playwright
 
+from jobber.utils.dom_mutation_observer import (
+    dom_mutation_change_detected,
+    handle_navigation_for_mutation_observer,
+)
 from jobber.utils.logger import logger
+from jobber.utils.messageType import MessageType
 
 # TODO - Create a wrapper browser manager class that either starts a playwright manager (our solution) or a hosted browser manager like browserbase
 
