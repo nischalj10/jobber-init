@@ -1,5 +1,6 @@
 import os
 import tempfile
+from typing import Union
 
 from playwright.async_api import BrowserContext, Page, Playwright
 from playwright.async_api import async_playwright as playwright
@@ -186,7 +187,7 @@ class PlaywrightManager:
         await self.ensure_browser_context()
         return self._browser_context
 
-    async def get_current_url(self) -> str | None:
+    async def get_current_url(self) -> Union[str, None]:
         """
         Get the current URL of current page
 
@@ -211,7 +212,7 @@ class PlaywrightManager:
             browser: BrowserContext = await self.get_browser_context()  # type: ignore
             # Filter out closed pages
             pages: list[Page] = [page for page in browser.pages if not page.is_closed()]
-            page: Page | None = pages[-1] if pages else None
+            page: Union[Page, None] = pages[-1] if pages else None
             logger.debug(f"Current page: {page.url if page else None}")
             if page is not None:
                 return page
@@ -222,7 +223,7 @@ class PlaywrightManager:
             logger.warn("Browser context was closed. Creating a new one.")
             PlaywrightManager._browser_context = None
             _browser: BrowserContext = await self.get_browser_context()  # type: ignore
-            page: Page | None = await self.get_current_page()
+            page: Union[Page, None] = await self.get_current_page()
             return page
 
     async def close_all_tabs(self, keep_first_tab: bool = True):
@@ -286,70 +287,70 @@ class PlaywrightManager:
         context = await self.get_browser_context()
         await context.expose_function("user_response", self.receive_user_response)  # type: ignore
 
-    async def notify_user(
-        self, message: str, message_type: MessageType = MessageType.STEP
-    ):
-        """
-        Notify the user with a message.
+    # async def notify_user(
+    #     self, message: str, message_type: MessageType = MessageType.STEP
+    # ):
+    #     """
+    #     Notify the user with a message.
 
-        Args:
-            message (str): The message to notify the user with.
-            message_type (enum, optional): Values can be 'PLAN', 'QUESTION', 'ANSWER', 'INFO', 'STEP'. Defaults to 'STEP'.
-            To Do: Convert to Enum.
-        """
+    #     Args:
+    #         message (str): The message to notify the user with.
+    #         message_type (enum, optional): Values can be 'PLAN', 'QUESTION', 'ANSWER', 'INFO', 'STEP'. Defaults to 'STEP'.
+    #         To Do: Convert to Enum.
+    #     """
 
-        if message.startswith(":"):
-            message = message[1:]
+    #     if message.startswith(":"):
+    #         message = message[1:]
 
-        if message.endswith(","):
-            message = message[:-1]
+    #     if message.endswith(","):
+    #         message = message[:-1]
 
-        if message_type == MessageType.PLAN:
-            message = beautify_plan_message(message)
-            message = "Plan:\n" + message
-        elif message_type == MessageType.STEP:
-            if "confirm" in message.lower():
-                message = "Verify: " + message
-            else:
-                message = "Next step: " + message
-        elif message_type == MessageType.QUESTION:
-            message = "Question: " + message
-        elif message_type == MessageType.ANSWER:
-            message = "Response: " + message
+    #     if message_type == MessageType.PLAN:
+    #         message = beautify_plan_message(message)
+    #         message = "Plan:\n" + message
+    #     elif message_type == MessageType.STEP:
+    #         if "confirm" in message.lower():
+    #             message = "Verify: " + message
+    #         else:
+    #             message = "Next step: " + message
+    #     elif message_type == MessageType.QUESTION:
+    #         message = "Question: " + message
+    #     elif message_type == MessageType.ANSWER:
+    #         message = "Response: " + message
 
-        safe_message = escape_js_message(message)
-        self.ui_manager.new_system_message(safe_message, message_type)
+    #     safe_message = escape_js_message(message)
+    #     self.ui_manager.new_system_message(safe_message, message_type)
 
-        if self.ui_manager.overlay_show_details == False:  # noqa: E712
-            if message_type not in (
-                MessageType.PLAN,
-                MessageType.QUESTION,
-                MessageType.ANSWER,
-                MessageType.INFO,
-            ):
-                return
+    #     if self.ui_manager.overlay_show_details == False:  # noqa: E712
+    #         if message_type not in (
+    #             MessageType.PLAN,
+    #             MessageType.QUESTION,
+    #             MessageType.ANSWER,
+    #             MessageType.INFO,
+    #         ):
+    #             return
 
-        if self.ui_manager.overlay_show_details == True:  # noqa: E712
-            if message_type not in (
-                MessageType.PLAN,
-                MessageType.QUESTION,
-                MessageType.ANSWER,
-                MessageType.INFO,
-                MessageType.STEP,
-            ):
-                return
+    #     if self.ui_manager.overlay_show_details == True:  # noqa: E712
+    #         if message_type not in (
+    #             MessageType.PLAN,
+    #             MessageType.QUESTION,
+    #             MessageType.ANSWER,
+    #             MessageType.INFO,
+    #             MessageType.STEP,
+    #         ):
+    #             return
 
-        safe_message_type = escape_js_message(message_type.value)
-        try:
-            js_code = f"addSystemMessage({safe_message}, is_awaiting_user_response=false, message_type={safe_message_type});"
-            page = await self.get_current_page()
-            await page.evaluate(js_code)
-        except Exception as e:
-            logger.error(
-                f'Failed to notify user with message "{message}". However, most likey this will work itself out after the page loads: {e}'
-            )
+    #     safe_message_type = escape_js_message(message_type.value)
+    #     try:
+    #         js_code = f"addSystemMessage({safe_message}, is_awaiting_user_response=false, message_type={safe_message_type});"
+    #         page = await self.get_current_page()
+    #         await page.evaluate(js_code)
+    #     except Exception as e:
+    #         logger.error(
+    #             f'Failed to notify user with message "{message}". However, most likey this will work itself out after the page loads: {e}'
+    #         )
 
-        self.notification_manager.notify(message, message_type.value)
+    #     self.notification_manager.notify(message, message_type.value)
 
     async def highlight_element(self, selector: str, add_highlight: bool):
         try:
@@ -381,44 +382,44 @@ class PlaywrightManager:
             # This is not significant enough to fail the operation
             pass
 
-    async def receive_user_response(self, response: str):
-        self.user_response = response  # Store the response for later use.
-        logger.debug(f"Received user response to system prompt: {response}")
-        # Notify event loop that the user's response has been received.
-        self.user_response_event.set()
+    # async def receive_user_response(self, response: str):
+    #     self.user_response = response  # Store the response for later use.
+    #     logger.debug(f"Received user response to system prompt: {response}")
+    #     # Notify event loop that the user's response has been received.
+    #     self.user_response_event.set()
 
-    async def prompt_user(self, message: str) -> str:
-        """
-        Prompt the user with a message and wait for a response.
+    # async def prompt_user(self, message: str) -> str:
+    #     """
+    #     Prompt the user with a message and wait for a response.
 
-        Args:
-            message (str): The message to prompt the user with.
+    #     Args:
+    #         message (str): The message to prompt the user with.
 
-        Returns:
-            str: The user's response.
-        """
-        logger.debug(f'Prompting user with message: "{message}"')
-        # self.ui_manager.new_system_message(message)
+    #     Returns:
+    #         str: The user's response.
+    #     """
+    #     logger.debug(f'Prompting user with message: "{message}"')
+    #     # self.ui_manager.new_system_message(message)
 
-        page = await self.get_current_page()
+    #     page = await self.get_current_page()
 
-        await self.ui_manager.show_overlay(page)
-        self.log_system_message(
-            message, MessageType.QUESTION
-        )  # add the message to history after the overlay is opened to avoid double adding it. add_system_message below will add it
+    #     await self.ui_manager.show_overlay(page)
+    #     self.log_system_message(
+    #         message, MessageType.QUESTION
+    #     )  # add the message to history after the overlay is opened to avoid double adding it. add_system_message below will add it
 
-        safe_message = escape_js_message(message)
+    #     safe_message = escape_js_message(message)
 
-        js_code = f"addSystemMessage({safe_message}, is_awaiting_user_response=true, message_type='question');"
-        await page.evaluate(js_code)
+    #     js_code = f"addSystemMessage({safe_message}, is_awaiting_user_response=true, message_type='question');"
+    #     await page.evaluate(js_code)
 
-        await self.user_response_event.wait()
-        result = self.user_response
-        logger.info(f'User prompt reponse to "{message}": {result}')
-        self.user_response_event.clear()
-        self.user_response = ""
-        self.ui_manager.new_user_message(result)
-        return result
+    #     await self.user_response_event.wait()
+    #     result = self.user_response
+    #     logger.info(f'User prompt reponse to "{message}": {result}')
+    #     self.user_response_event.clear()
+    #     self.user_response = ""
+    #     self.ui_manager.new_user_message(result)
+    #     return result
 
     def set_take_screenshots(self, take_screenshots: bool):
         self._take_screenshots = take_screenshots
@@ -435,7 +436,7 @@ class PlaywrightManager:
     async def take_screenshots(
         self,
         name: str,
-        page: Page | None,
+        page: Union[Page, None],
         full_page: bool = True,
         include_timestamp: bool = True,
         load_state: str = "domcontentloaded",
@@ -498,7 +499,9 @@ class PlaywrightManager:
 
         await self.ui_manager.update_processing_state(processing_state, page)
 
-    async def command_completed(self, command: str, elapsed_time: float | None = None):
+    async def command_completed(
+        self, command: str, elapsed_time: Union[float, None] = None
+    ):
         """
         Notify the overlay that the command has been completed.
         """
