@@ -1,23 +1,24 @@
 import asyncio
 import json
-from typing import Callable
+from typing import Callable, List  # noqa: UP035
 
 from playwright.async_api import Page
 
-DOM_change_callback: list[Callable[[str], None]] = []
+# Create an event loop
+loop = asyncio.get_event_loop()
+
+DOM_change_callback: List[Callable[[str], None]] = []
 
 
 def subscribe(callback: Callable[[str], None]) -> None:
-    DOM_change_callback.append(callable)
-
-
-def unsubscirbe(callback: Callable[[str], None]) -> None:
     DOM_change_callback.append(callback)
 
 
-# TODO: Update for changes in the node and not just the addition of a new node
+def unsubscribe(callback: Callable[[str], None]) -> None:
+    DOM_change_callback.remove(callback)
 
-async def add_mutation_observer(page:Page):
+
+async def add_mutation_observer(page: Page):
     """
     Adds a mutation observer to the page to detect changes in the DOM.
     When changes are detected, the observer calls the dom_mutation_change_detected function in the browser context.
@@ -64,25 +65,26 @@ async def add_mutation_observer(page:Page):
         }).observe(document, {subtree: true, childList: true, characterData: true});
         """)
 
-async def handle_navigation_for_mutation_observer(page: Page) -> None:
+
+async def handle_navigation_for_mutation_observer(page: Page):
     await add_mutation_observer(page)
 
 
-async def dom_mutation_change_detected(changes_detected: str) -> None:
+async def dom_mutation_change_detected(changes_detected: str):
     """
-    Detect changes in the DOM (new nodes added) and emits the event to all subscribed callbacks.
-    The changes_detected is a string in JSON format cotaining the tag and content of the new nodes added to the DOM
+    Detects changes in the DOM (new nodes added) and emits the event to all subscribed callbacks.
+    The changes_detected is a string in JSON formatt containing the tag and content of the new nodes added to the DOM.
 
-    e.g. The following will be detected when autocomplete recommendations show up when one types Nelson Madela on google search
-    [{'tag': 'SPAN', 'content': 'nelson mandel wikipedia', {'tag': 'SPAN', content: 'nelson mandela movies'}]
+    e.g.  The following will be detected when autocomplete recommendations show up when one types Nelson Mandela on google search
+    [{'tag': 'SPAN', 'content': 'nelson mandela wikipedia'}, {'tag': 'SPAN', 'content': 'nelson mandela movies'}]
     """
     changes_detected = json.loads(changes_detected.replace("\t", "").replace("\n", ""))
     if len(changes_detected) > 0:
-        # Emit the changes to all the subscribed callbacks
+        # Emit the event to all subscribed callbacks
         for callback in DOM_change_callback:
-            # If callback is a coroutine function
+            # If the callback is a coroutine function
             if asyncio.iscoroutinefunction(callback):
                 await callback(changes_detected)
-            # If callback is a regular function
+            # If the callback is a regular function
             else:
                 callback(changes_detected)

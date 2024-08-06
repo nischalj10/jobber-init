@@ -1,7 +1,7 @@
 import os
 import tempfile
 import time
-from typing import Union
+from typing import List, Union
 
 from playwright.async_api import BrowserContext, Page, Playwright
 from playwright.async_api import async_playwright as playwright
@@ -11,7 +11,7 @@ from jobber.utils.dom_mutation_observer import (
     handle_navigation_for_mutation_observer,
 )
 from jobber.utils.logger import logger
-from jobber.utils.messageType import MessageType
+from jobber.utils.ui_messagetype import MessageType
 
 # TODO - Create a wrapper browser manager class that either starts a playwright manager (our solution) or a hosted browser manager like browserbase
 
@@ -217,7 +217,7 @@ class PlaywrightManager:
         try:
             browser: BrowserContext = await self.get_browser_context()  # type: ignore
             # Filter out closed pages
-            pages: list[Page] = [page for page in browser.pages if not page.is_closed()]
+            pages: List[Page] = [page for page in browser.pages if not page.is_closed()]
             page: Union[Page, None] = pages[-1] if pages else None
             logger.debug(f"Current page: {page.url if page else None}")
             if page is not None:
@@ -240,8 +240,8 @@ class PlaywrightManager:
             keep_first_tab (bool, optional): Whether to keep the first tab open. Defaults to True.
         """
         browser_context = await self.get_browser_context()
-        pages: list[Page] = browser_context.pages  # type: ignore
-        pages_to_close: list[Page] = pages[1:] if keep_first_tab else pages  # type: ignore
+        pages: List[Page] = browser_context.pages  # type: ignore
+        pages_to_close: List[Page] = pages[1:] if keep_first_tab else pages  # type: ignore
         for page in pages_to_close:  # type: ignore
             await page.close()  # type: ignore
 

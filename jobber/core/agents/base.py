@@ -6,8 +6,9 @@ from ae.core.memory.static_ltm import get_user_ltm
 from ae.core.post_process_responses import (
     final_reply_callback_planner_agent as print_message_as_planner,
 )
-from ae.core.prompts import LLM_PROMPTS
-from ae.core.skills.get_user_input import get_user_input
+
+from jobber.core.prompts import LLM_PROMPTS
+from jobber.core.skills.get_user_input import get_user_input
 
 
 class PlannerAgent:
