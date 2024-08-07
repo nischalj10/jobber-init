@@ -44,9 +44,9 @@ async def openurl(
 
     await browser_manager.take_screenshots(f"{function_name}_end", page)
 
-    await browser_manager.notify_user(
-        f"Opened URL: {url}", message_type=MessageType.ACTION
-    )
+    # await browser_manager.notify_user(
+    #     f"Opened URL: {url}", message_type=MessageType.ACTION
+    # )
     # Get the page title
     title = await page.title()
     url = page.url

@@ -1,39 +1,38 @@
-import os
-
-import litellm
-from dotenv import load_dotenv
-
-from jobber.core.agents.browser_nav_agent import browser_nav_agent
+from jobber.core.agents.base import BaseAgent
+from jobber.core.agents.browser_nav_agent import BrowserNavAgent
 from jobber.core.prompts import LLM_PROMPTS
-from jobber.utils.extract_json import extract_json
-
-load_dotenv()
-
-messages = [
-    {
-        "role": "system",
-        "content": LLM_PROMPTS["PLANNER_AGENT_PROMPT"],
-    }
-]
 
 
-async def planner_agent(query: str):
-    try:
-        messages.append({"role": "user", "content": query})
-        response = litellm.completion(
-            model=os.environ["MODEL_NAME"],
-            messages=messages,
+class PlannerAgent(BaseAgent):
+    def __init__(self):
+        super().__init__(system_prompt=LLM_PROMPTS["PLANNER_AGENT_PROMPT"])
+        self.browser_agent = BrowserNavAgent(self)
+
+    async def process_query(self, query: str):
+        response = await super().process_query(query)
+
+        while not response["terminate"]:
+            browser_response = await self.browser_agent.process_query(
+                response["content"]
+            )
+
+            if browser_response["terminate"]:
+                self.messages.append(
+                    {"role": "assistant", "content": browser_response["content"]}
+                )
+                response = await self.generate_reply([], None)
+            else:
+                self.messages.append(
+                    {
+                        "role": "user",
+                        "content": f"Browser agent response: {browser_response['content']}",
+                    }
+                )
+                response = await self.generate_reply([], None)
+
+        return response["content"]
+
+    async def receive_browser_message(self, message: str):
+        return await self.generate_reply(
+            [{"role": "user", "content": message}], self.browser_agent
         )
-
-        response_content = response.choices[0].message.content
-        extracted_response = extract_json(response_content)
-        print("planner response", extracted_response)
-        print("planner response", response)
-
-        if extracted_response.get("terminate") == "yes":
-            print("final response", extracted_response.get("final_response"))
-        elif extracted_response.get("next_step"):
-            await browser_nav_agent(extracted_response["next_step"])
-
-    except Exception as e:
-        print(f"Error occurred: {e}")

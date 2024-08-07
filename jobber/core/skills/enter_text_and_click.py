@@ -86,18 +86,18 @@ async def enter_text_and_click(
             result["detailed_message"] += (
                 f' Instead of click, pressed the Enter key successfully on element: "{click_selector}".'
             )
-            await browser_manager.notify_user(
-                f'Pressed the Enter key successfully on element: "{click_selector}".',
-                message_type=MessageType.ACTION,
-            )
+            # await browser_manager.notify_user(
+            #     f'Pressed the Enter key successfully on element: "{click_selector}".',
+            #     message_type=MessageType.ACTION,
+            # )
         else:
             result["detailed_message"] += (
                 f' Clicking the same element after entering text in it, is of no value. Tried pressing the Enter key on element "{click_selector}" instead of click and failed.'
             )
-            await browser_manager.notify_user(
-                'Failed to press the Enter key on element "{click_selector}".',
-                message_type=MessageType.ACTION,
-            )
+            # await browser_manager.notify_user(
+            #     'Failed to press the Enter key on element "{click_selector}".',
+            #     message_type=MessageType.ACTION,
+            # )
     else:
         await browser_manager.highlight_element(click_selector, True)
 

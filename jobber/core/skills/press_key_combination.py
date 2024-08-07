@@ -1,8 +1,8 @@
 import asyncio
 import inspect
-from typing_extensions import Annotated
 
 from playwright.async_api import Page  # type: ignore
+from typing_extensions import Annotated
 
 from jobber.core.playwright_manager import PlaywrightManager
 from jobber.utils.dom_mutation_observer import (
@@ -10,7 +10,6 @@ from jobber.utils.dom_mutation_observer import (
     unsubscribe,  # type: ignore
 )
 from jobber.utils.logger import logger
-from jobber.utils.ui_messagetype import MessageType
 
 
 async def press_key_combination(
@@ -69,9 +68,9 @@ async def press_key_combination(
     if dom_changes_detected:
         return f"Key {key_combination} executed successfully.\n As a consequence of this action, new elements have appeared in view:{dom_changes_detected}. This means that the action is not yet executed and needs further interaction. Get all_fields DOM to complete the interaction."
 
-    await browser_manager.notify_user(
-        f"Key {key_combination} executed successfully", message_type=MessageType.ACTION
-    )
+    # await browser_manager.notify_user(
+    #     f"Key {key_combination} executed successfully", message_type=MessageType.ACTION
+    # )
     return f"Key {key_combination} executed successfully"
 
 

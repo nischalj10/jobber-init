@@ -11,3 +11,4 @@ jobber is an agent designed to search and apply for jobs on your behalf. It is a
 ### run the agent
 
 1. use the command `python -u -m jobber.main`
+2. example task for - `Task: Buy the book zero to one from amazon.in. Use COD and my default address.`

@@ -1,133 +1,95 @@
-from datetime import datetime
-from string import Template
-from typing import Any, Callable, Dict, List, Optional
+import json
+import os
+from typing import Any, Callable, Dict, List, Optional, Tuple
 
-from ae.core.memory.static_ltm import get_user_ltm
-from ae.core.post_process_responses import (
-    final_reply_callback_planner_agent as print_message_as_planner,
-)
+import litellm
+from dotenv import load_dotenv
 
-from jobber.core.prompts import LLM_PROMPTS
-from jobber.core.skills.get_user_input import get_user_input
+from jobber.utils.extract_json import extract_json
+from jobber.utils.function_utils import get_function_schema
+
+load_dotenv()
 
 
-class PlannerAgent:
-    def __init__(self, config_list: List[Dict[str, Any]], user_proxy_agent):
-        """
-        Initialize the PlannerAgent.
+class BaseAgent:
+    def __init__(
+        self,
+        system_prompt: str = "You are a helpful assistant",
+        tools: Optional[List[Tuple[Callable, str]]] = None,
+    ):
+        self.messages = [{"role": "system", "content": system_prompt}]
+        self.tools_list = []
+        self.executable_functions_list = {}
+        self.llm_config = {"model": os.environ["MODEL_NAME"]}
+        if tools:
+            self._initialize_tools(tools)
+            self.llm_config.update({"tools": self.tools_list, "tool_choice": "auto"})
 
-        Parameters:
-        - config_list: A list of configuration parameters required for the agent.
-        - user_proxy_agent: An instance of the UserProxyAgent class.
-        """
-        self.name = "planner_agent"
-        self.config_list = config_list
-        self.user_proxy_agent = user_proxy_agent
-        self.llm_config = {
-            "config_list": config_list,
-            "cache_seed": None,
-            "temperature": 0.0,
-            "top_p": 0.001,
-            "seed": 12345,
-        }
-
-        user_ltm = self.__get_ltm()
-        system_message = LLM_PROMPTS["PLANNER_AGENT_PROMPT"]
-
-        if user_ltm:
-            user_ltm = "\n" + user_ltm
-            system_message = Template(system_message).substitute(
-                basic_user_information=user_ltm
+    def _initialize_tools(self, tools: List[Tuple[Callable, str]]):
+        for function, description in tools:
+            self.tools_list.append(
+                get_function_schema(function, description=description)
             )
+            self.executable_functions_list[function.__name__] = function
 
-        system_message = (
-            system_message
-            + "\n"
-            + f"Today's date is {datetime.now().strftime('%d %B %Y')}"
-        )
-        self.system_message = system_message
+    async def generate_reply(
+        self, messages: List[Dict[str, Any]], sender
+    ) -> Dict[str, Any]:
+        self.messages.extend(messages)
 
-        self.function_map = {}
-        self.register_function(get_user_input, LLM_PROMPTS["GET_USER_INPUT_PROMPT"])
-        user_proxy_agent.register_function({get_user_input.__name__: get_user_input})
+        while True:
+            response = litellm.completion(messages=self.messages, **self.llm_config)
 
-        self.reply_func_list = [
-            {
-                "trigger": [PlannerAgent, None],
-                "reply_func": print_message_as_planner,
-                "config": {"callback": None},
-            }
-        ]
+            response_message = response.choices[0].message
+            print("response", response_message)
+            tool_calls = response_message.tool_calls
 
-    def __get_ltm(self) -> Optional[str]:
-        """
-        Get the long term memory of the user.
-        Returns: str | None - The user LTM or None if not found.
-        """
-        return get_user_ltm()
+            if tool_calls:
+                self.messages.append(response_message)
+                for tool_call in tool_calls:
+                    function_name = tool_call.function.name
+                    function_to_call = self.executable_functions_list[function_name]
+                    function_args = json.loads(tool_call.function.arguments)
+                    function_response = await function_to_call(**function_args)
+                    self.messages.append(
+                        {
+                            "tool_call_id": tool_call.id,
+                            "role": "tool",
+                            "name": function_name,
+                            "content": str(function_response),
+                        }
+                    )
+                continue
 
-    def register_function(self, func: Callable, description: str):
-        """
-        Register a function to be used by the agent.
+            content = response_message.content
+            extracted_response = extract_json(content)
 
-        Parameters:
-        - func: The function to be registered.
-        - description: A description of the function.
-        """
-        self.function_map[func.__name__] = {
-            "function": func,
-            "description": description,
-        }
-
-    def generate_reply(self, messages: List[Dict[str, Any]], sender) -> str:
-        """
-        Generate a reply based on the conversation history.
-
-        Parameters:
-        - messages: A list of message dictionaries representing the conversation history.
-        - sender: The sender of the last message.
-
-        Returns:
-        - A string containing the generated reply.
-        """
-        # This is a placeholder. In a real implementation, you would use an LLM to generate the reply.
-        # You would need to implement the logic to use the system message, conversation history,
-        # and registered functions to generate an appropriate response.
-        return "This is a placeholder response from the PlannerAgent."
+            if extracted_response.get("terminate") == "yes":
+                return {
+                    "terminate": True,
+                    "content": extracted_response.get("final_response", content),
+                }
+            elif extracted_response.get("next_step"):
+                return {
+                    "terminate": False,
+                    "content": extracted_response.get("next_step"),
+                }
+            else:
+                self.messages.append(response_message)
+                return {"terminate": False, "content": content}
 
     def send(self, message: str, recipient):
-        """
-        Send a message to another agent.
+        return recipient.receive(message, self)
 
-        Parameters:
-        - message: The message to be sent.
-        - recipient: The recipient agent.
-        """
-        recipient.receive(message, self)
+    async def receive(self, message: str, sender):
+        reply = await self.generate_reply(
+            [{"role": "user", "content": message}], sender
+        )
+        return self.send(reply["content"], sender)
 
-    def receive(self, message: str, sender):
-        """
-        Receive a message from another agent and generate a reply.
-
-        Parameters:
-        - message: The received message.
-        - sender: The sender of the message.
-        """
-        reply = self.generate_reply([{"role": "user", "content": message}], sender)
-        self.send(reply, sender)
-
-    def execute_function(self, func_name: str, **kwargs) -> Any:
-        """
-        Execute a registered function.
-
-        Parameters:
-        - func_name: The name of the function to execute.
-        - **kwargs: The arguments to pass to the function.
-
-        Returns:
-        - The result of the function execution.
-        """
-        if func_name in self.function_map:
-            return self.function_map[func_name]["function"](**kwargs)
-        else:
-            raise ValueError(f"Function {func_name} is not registered.")
+    async def process_query(self, query: str) -> Dict[str, Any]:
+        try:
+            return await self.generate_reply([{"role": "user", "content": query}], None)
+        except Exception as e:
+            print(f"Error occurred: {e}")
+            return {"terminate": True, "content": f"Error: {str(e)}"}

@@ -2,7 +2,7 @@ import asyncio
 
 from dotenv import load_dotenv
 
-from jobber.core.agents.planner_agent import planner_agent
+from jobber.core.agents.planner_agent import PlannerAgent
 from jobber.core.playwright_manager import PlaywrightManager
 
 
@@ -40,7 +40,9 @@ class SystemOrchestrator:
     async def execute_command(self, command):
         try:
             print(f"Executing command: {command}")
-            await planner_agent(command)
+            planner = PlannerAgent()
+            result = await planner.process_query(command)
+            print(f"Command execution result: {result}")
         except Exception as e:
             print(f"Error executing command: {e}")
 
