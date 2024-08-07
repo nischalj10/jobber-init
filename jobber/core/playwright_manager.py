@@ -16,8 +16,6 @@ from jobber.utils.ui_messagetype import MessageType
 
 # TODO - Create a wrapper browser manager class that either starts a playwright manager (our solution) or a hosted browser manager like browserbase
 
-load_dotenv()
-
 
 class PlaywrightManager:
     _homepage = "https://google.com"
@@ -122,6 +120,7 @@ class PlaywrightManager:
             PlaywrightManager._playwright = None  # type: ignore
 
     async def create_browser_context(self):
+        load_dotenv()
         user_data_dir: str = os.environ["BROWSER_USER_DATA_DIR"]
         profile_directory: str = os.environ["BROWSER_PROFILE"]
         print("Browser profile", user_data_dir)

@@ -1,0 +1,3004 @@
+{
+  "role": "WebArea",
+  "name": "Amazon.in : Zero to One",
+  "children": [
+    {
+      "role": "link",
+      "name": "Skip to main content",
+      "keyshortcuts": "68"
+    },
+    {
+      "role": "link",
+      "name": "Amazon.in",
+      "keyshortcuts": "76"
+    },
+    {
+      "role": "link",
+      "name": "Deliver to Nischal Bengaluru 560038\u200c",
+      "keyshortcuts": "83"
+    },
+    {
+      "role": "text",
+      "name": "All"
+    },
+    {
+      "role": "combobox",
+      "name": "",
+      "description": "Select the department you want to search in",
+      "keyshortcuts": "105",
+      "haspopup": "menu",
+      "children": [
+        {
+          "role": "option",
+          "name": "All Categories",
+          "keyshortcuts": "106",
+          "selected": true
+        },
+        {
+          "role": "option",
+          "name": "Alexa Skills",
+          "keyshortcuts": "107"
+        },
+        {
+          "role": "option",
+          "name": "Amazon Devices",
+          "keyshortcuts": "108"
+        },
+        {
+          "role": "option",
+          "name": "Amazon Fashion",
+          "keyshortcuts": "109"
+        },
+        {
+          "role": "option",
+          "name": "Amazon Fresh",
+          "keyshortcuts": "110"
+        },
+        {
+          "role": "option",
+          "name": "Amazon Fresh Meat",
+          "keyshortcuts": "111"
+        },
+        {
+          "role": "option",
+          "name": "Amazon Pharmacy",
+          "keyshortcuts": "112"
+        },
+        {
+          "role": "option",
+          "name": "Appliances",
+          "keyshortcuts": "113"
+        },
+        {
+          "role": "option",
+          "name": "Apps & Games",
+          "keyshortcuts": "114"
+        },
+        {
+          "role": "option",
+          "name": "Audible Audiobooks",
+          "keyshortcuts": "115"
+        },
+        {
+          "role": "option",
+          "name": "Baby",
+          "keyshortcuts": "116"
+        },
+        {
+          "role": "option",
+          "name": "Beauty",
+          "keyshortcuts": "117"
+        },
+        {
+          "role": "option",
+          "name": "Books",
+          "keyshortcuts": "118"
+        },
+        {
+          "role": "option",
+          "name": "Car & Motorbike",
+          "keyshortcuts": "119"
+        },
+        {
+          "role": "option",
+          "name": "Clothing & Accessories",
+          "keyshortcuts": "120"
+        },
+        {
+          "role": "option",
+          "name": "Collectibles",
+          "keyshortcuts": "121"
+        },
+        {
+          "role": "option",
+          "name": "Computers & Accessories",
+          "keyshortcuts": "122"
+        },
+        {
+          "role": "option",
+          "name": "Deals",
+          "keyshortcuts": "123"
+        },
+        {
+          "role": "option",
+          "name": "Electronics",
+          "keyshortcuts": "124"
+        },
+        {
+          "role": "option",
+          "name": "Furniture",
+          "keyshortcuts": "125"
+        },
+        {
+          "role": "option",
+          "name": "Garden & Outdoors",
+          "keyshortcuts": "126"
+        },
+        {
+          "role": "option",
+          "name": "Gift Cards",
+          "keyshortcuts": "127"
+        },
+        {
+          "role": "option",
+          "name": "Grocery & Gourmet Foods",
+          "keyshortcuts": "128"
+        },
+        {
+          "role": "option",
+          "name": "Health & Personal Care",
+          "keyshortcuts": "129"
+        },
+        {
+          "role": "option",
+          "name": "Home & Kitchen",
+          "keyshortcuts": "130"
+        },
+        {
+          "role": "option",
+          "name": "Industrial & Scientific",
+          "keyshortcuts": "131"
+        },
+        {
+          "role": "option",
+          "name": "Jewellery",
+          "keyshortcuts": "132"
+        },
+        {
+          "role": "option",
+          "name": "Kindle Store",
+          "keyshortcuts": "133"
+        },
+        {
+          "role": "option",
+          "name": "Luggage & Bags",
+          "keyshortcuts": "134"
+        },
+        {
+          "role": "option",
+          "name": "Luxury Beauty",
+          "keyshortcuts": "135"
+        },
+        {
+          "role": "option",
+          "name": "Movies & TV Shows",
+          "keyshortcuts": "136"
+        },
+        {
+          "role": "option",
+          "name": "MP3 Music",
+          "keyshortcuts": "137"
+        },
+        {
+          "role": "option",
+          "name": "Music",
+          "keyshortcuts": "138"
+        },
+        {
+          "role": "option",
+          "name": "Musical Instruments",
+          "keyshortcuts": "139"
+        },
+        {
+          "role": "option",
+          "name": "Office Products",
+          "keyshortcuts": "140"
+        },
+        {
+          "role": "option",
+          "name": "Pet Supplies",
+          "keyshortcuts": "141"
+        },
+        {
+          "role": "option",
+          "name": "Prime Video",
+          "keyshortcuts": "142"
+        },
+        {
+          "role": "option",
+          "name": "Shoes & Handbags",
+          "keyshortcuts": "143"
+        },
+        {
+          "role": "option",
+          "name": "Software",
+          "keyshortcuts": "144"
+        },
+        {
+          "role": "option",
+          "name": "Sports, Fitness & Outdoors",
+          "keyshortcuts": "145"
+        },
+        {
+          "role": "option",
+          "name": "Subscribe & Save",
+          "keyshortcuts": "146"
+        },
+        {
+          "role": "option",
+          "name": "Tools & Home Improvement",
+          "keyshortcuts": "147"
+        },
+        {
+          "role": "option",
+          "name": "Toys & Games",
+          "keyshortcuts": "148"
+        },
+        {
+          "role": "option",
+          "name": "Under \u20b9500",
+          "keyshortcuts": "149"
+        },
+        {
+          "role": "option",
+          "name": "Video Games",
+          "keyshortcuts": "150"
+        },
+        {
+          "role": "option",
+          "name": "Watches",
+          "keyshortcuts": "151"
+        }
+      ],
+      "value": "All Categories"
+    },
+    {
+      "role": "textbox",
+      "name": "Search Amazon.in",
+      "keyshortcuts": "155",
+      "value": "Zero to One"
+    },
+    {
+      "role": "button",
+      "name": "Go",
+      "keyshortcuts": "160"
+    },
+    {
+      "role": "link",
+      "name": "Choose a language for shopping.",
+      "keyshortcuts": "165"
+    },
+    {
+      "role": "link",
+      "name": "Hello, NISCHAL Account & Lists",
+      "keyshortcuts": "172"
+    },
+    {
+      "role": "link",
+      "name": "Not NISCHAL? Sign Out",
+      "keyshortcuts": "177"
+    },
+    {
+      "role": "link",
+      "name": "Returns & Orders",
+      "keyshortcuts": "178"
+    },
+    {
+      "role": "link",
+      "name": "0 items in cart",
+      "keyshortcuts": "182"
+    },
+    {
+      "role": "button",
+      "name": "Open Menu",
+      "keyshortcuts": "374"
+    },
+    {
+      "role": "link",
+      "name": "Fresh",
+      "keyshortcuts": "384"
+    },
+    {
+      "role": "link",
+      "name": "Amazon miniTV",
+      "keyshortcuts": "387"
+    },
+    {
+      "role": "link",
+      "name": "Sell",
+      "keyshortcuts": "388"
+    },
+    {
+      "role": "link",
+      "name": "Gift Cards",
+      "keyshortcuts": "389"
+    },
+    {
+      "role": "link",
+      "name": "Amazon Pay",
+      "keyshortcuts": "390"
+    },
+    {
+      "role": "link",
+      "name": "Buy Again",
+      "keyshortcuts": "391"
+    },
+    {
+      "role": "link",
+      "name": "AmazonBasics",
+      "keyshortcuts": "392"
+    },
+    {
+      "role": "link",
+      "name": "Gift Ideas",
+      "keyshortcuts": "393"
+    },
+    {
+      "role": "link",
+      "name": "Amazon Business",
+      "keyshortcuts": "394"
+    },
+    {
+      "role": "link",
+      "name": "Health, Household & Personal Care",
+      "keyshortcuts": "397"
+    },
+    {
+      "role": "link",
+      "name": "Browsing History",
+      "keyshortcuts": "398"
+    },
+    {
+      "role": "link",
+      "name": "Books",
+      "keyshortcuts": "401"
+    },
+    {
+      "role": "link",
+      "name": "Today's Deals",
+      "keyshortcuts": "402"
+    },
+    {
+      "role": "link",
+      "name": "Customer Service",
+      "keyshortcuts": "403"
+    },
+    {
+      "role": "link",
+      "name": "Home Improvement",
+      "keyshortcuts": "404"
+    },
+    {
+      "role": "link",
+      "name": "NISCHAL 's Amazon.in",
+      "keyshortcuts": "405"
+    },
+    {
+      "role": "link",
+      "name": "New Releases",
+      "keyshortcuts": "408"
+    },
+    {
+      "role": "link",
+      "name": "Best Sellers",
+      "keyshortcuts": "409"
+    },
+    {
+      "role": "link",
+      "name": "Home & Kitchen",
+      "keyshortcuts": "410"
+    },
+    {
+      "role": "link",
+      "name": "Toys & Games",
+      "keyshortcuts": "411"
+    },
+    {
+      "role": "link",
+      "name": "Computers",
+      "keyshortcuts": "412"
+    },
+    {
+      "role": "link",
+      "name": "Prime",
+      "keyshortcuts": "413"
+    },
+    {
+      "role": "link",
+      "name": "Electronics",
+      "keyshortcuts": "416"
+    },
+    {
+      "role": "link",
+      "name": "Fashion",
+      "keyshortcuts": "417"
+    },
+    {
+      "role": "link",
+      "name": "Subscribe & Save",
+      "keyshortcuts": "418"
+    },
+    {
+      "role": "link",
+      "name": "Mobiles",
+      "keyshortcuts": "419"
+    },
+    {
+      "role": "link",
+      "name": "Beauty & Personal Care",
+      "keyshortcuts": "420"
+    },
+    {
+      "role": "link",
+      "name": "Sports, Fitness & Outdoors",
+      "keyshortcuts": "421"
+    },
+    {
+      "role": "link",
+      "name": "Car & Motorbike",
+      "keyshortcuts": "422"
+    },
+    {
+      "role": "link",
+      "name": "Baby",
+      "keyshortcuts": "423"
+    },
+    {
+      "role": "link",
+      "name": "Pet Supplies",
+      "keyshortcuts": "424"
+    },
+    {
+      "role": "link",
+      "name": "Video Games",
+      "keyshortcuts": "425"
+    },
+    {
+      "role": "link",
+      "name": "",
+      "keyshortcuts": "431"
+    },
+    {
+      "role": "generic",
+      "name": "",
+      "keyshortcuts": "438"
+    },
+    {
+      "role": "generic",
+      "name": "",
+      "keyshortcuts": "444"
+    },
+    {
+      "role": "text",
+      "name": "1-16 of over 7,000 results for"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "text",
+      "name": "\"Zero to One\""
+    },
+    {
+      "role": "text",
+      "name": "Sort by:"
+    },
+    {
+      "role": "combobox",
+      "name": "Sort by:",
+      "keyshortcuts": "480",
+      "haspopup": "menu",
+      "children": [
+        {
+          "role": "option",
+          "name": "Featured",
+          "keyshortcuts": "481",
+          "selected": true
+        },
+        {
+          "role": "option",
+          "name": "Price: Low to High",
+          "keyshortcuts": "482"
+        },
+        {
+          "role": "option",
+          "name": "Price: High to Low",
+          "keyshortcuts": "483"
+        },
+        {
+          "role": "option",
+          "name": "Avg. Customer Review",
+          "keyshortcuts": "484"
+        },
+        {
+          "role": "option",
+          "name": "Newest Arrivals",
+          "keyshortcuts": "485"
+        },
+        {
+          "role": "option",
+          "name": "Best Sellers",
+          "keyshortcuts": "486"
+        }
+      ],
+      "value": "Featured"
+    },
+    {
+      "role": "generic",
+      "name": "",
+      "keyshortcuts": "497"
+    },
+    {
+      "role": "heading",
+      "name": "Results",
+      "keyshortcuts": "505",
+      "level": 2
+    },
+    {
+      "role": "link",
+      "name": "Zero to One (L)",
+      "keyshortcuts": "523"
+    },
+    {
+      "role": "link",
+      "name": "Zero to One (L)",
+      "keyshortcuts": "531"
+    },
+    {
+      "role": "text",
+      "name": "by "
+    },
+    {
+      "role": "link",
+      "name": "Peter Thiel",
+      "keyshortcuts": "536"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "text",
+      "name": "and "
+    },
+    {
+      "role": "link",
+      "name": "Blake Masters",
+      "keyshortcuts": "538"
+    },
+    {
+      "role": "text",
+      "name": " | "
+    },
+    {
+      "role": "text",
+      "name": "18 September 2014"
+    },
+    {
+      "role": "button",
+      "name": "4.5 out of 5 stars",
+      "keyshortcuts": "547"
+    },
+    {
+      "role": "link",
+      "name": "31,178",
+      "keyshortcuts": "552"
+    },
+    {
+      "role": "link",
+      "name": "Paperback",
+      "keyshortcuts": "559"
+    },
+    {
+      "role": "link",
+      "name": "Great Freedom Sale",
+      "keyshortcuts": "561"
+    },
+    {
+      "role": "link",
+      "name": "\u20b9349 M.R.P: \u20b9599",
+      "keyshortcuts": "568"
+    },
+    {
+      "role": "text",
+      "name": "(42% off)"
+    },
+    {
+      "role": "text",
+      "name": "FREE delivery "
+    },
+    {
+      "role": "text",
+      "name": "Mon, 12 Aug "
+    },
+    {
+      "role": "text",
+      "name": "on \u20b9499 of items fulfilled by Amazon"
+    },
+    {
+      "role": "text",
+      "name": "Or fastest delivery "
+    },
+    {
+      "role": "text",
+      "name": "Today 10 am - 2 pm"
+    },
+    {
+      "role": "link",
+      "name": "Kindle Edition",
+      "keyshortcuts": "598"
+    },
+    {
+      "role": "link",
+      "name": "\u20b9282.73",
+      "keyshortcuts": "601"
+    },
+    {
+      "role": "text",
+      "name": "(44% off)"
+    },
+    {
+      "role": "text",
+      "name": "Available instantly"
+    },
+    {
+      "role": "link",
+      "name": "Audible Audiobook",
+      "keyshortcuts": "617"
+    },
+    {
+      "role": "text",
+      "name": "1 Credit"
+    },
+    {
+      "role": "text",
+      "name": "Available instantly"
+    },
+    {
+      "role": "link",
+      "name": "Madhushree Publication Zero To One: Notes On Start Ups, Or How To Build The Future (Hindi) [Paperback] Peter Thiel,Blake M...",
+      "keyshortcuts": "638"
+    },
+    {
+      "role": "link",
+      "name": "Madhushree Publication Zero To One: Notes On Start Ups, Or How To Build The Future (Hindi) [Paperback] Peter Thiel,Blake Masters,Rachna Bhola \" Yamini \" [Jan 28, 2022]",
+      "keyshortcuts": "646"
+    },
+    {
+      "role": "text",
+      "name": "Hindi Edition"
+    },
+    {
+      "role": "text",
+      "name": " | "
+    },
+    {
+      "role": "text",
+      "name": "by "
+    },
+    {
+      "role": "text",
+      "name": "Peter Thiel"
+    },
+    {
+      "role": "text",
+      "name": ", "
+    },
+    {
+      "role": "text",
+      "name": "Blake Masters"
+    },
+    {
+      "role": "text",
+      "name": ", et al."
+    },
+    {
+      "role": "text",
+      "name": " | "
+    },
+    {
+      "role": "text",
+      "name": "28 January 2022"
+    },
+    {
+      "role": "button",
+      "name": "4.2 out of 5 stars",
+      "keyshortcuts": "667"
+    },
+    {
+      "role": "link",
+      "name": "194",
+      "keyshortcuts": "672"
+    },
+    {
+      "role": "link",
+      "name": "Paperback",
+      "keyshortcuts": "679"
+    },
+    {
+      "role": "link",
+      "name": "\u20b9215 M.R.P: \u20b9299",
+      "keyshortcuts": "682"
+    },
+    {
+      "role": "text",
+      "name": "(28% off)"
+    },
+    {
+      "role": "text",
+      "name": "FREE delivery "
+    },
+    {
+      "role": "text",
+      "name": "Tue, 13 Aug "
+    },
+    {
+      "role": "text",
+      "name": "on \u20b9499 of items fulfilled by Amazon"
+    },
+    {
+      "role": "text",
+      "name": "More Buying Choices"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n",
+      "keyshortcuts": "705"
+    },
+    {
+      "role": "text",
+      "name": "\u20b9185"
+    },
+    {
+      "role": "link",
+      "name": "(17 new offers)",
+      "keyshortcuts": "709"
+    },
+    {
+      "role": "link",
+      "name": "Zero To One",
+      "keyshortcuts": "731"
+    },
+    {
+      "role": "link",
+      "name": "Zero To One",
+      "keyshortcuts": "739"
+    },
+    {
+      "role": "text",
+      "name": "by "
+    },
+    {
+      "role": "link",
+      "name": "Peter Thiel",
+      "keyshortcuts": "744"
+    },
+    {
+      "role": "text",
+      "name": " | "
+    },
+    {
+      "role": "text",
+      "name": "1 October 2022"
+    },
+    {
+      "role": "button",
+      "name": "4.0 out of 5 stars",
+      "keyshortcuts": "753"
+    },
+    {
+      "role": "link",
+      "name": "24",
+      "keyshortcuts": "758"
+    },
+    {
+      "role": "link",
+      "name": "Paperback",
+      "keyshortcuts": "765"
+    },
+    {
+      "role": "link",
+      "name": "\u20b9199",
+      "keyshortcuts": "768"
+    },
+    {
+      "role": "text",
+      "name": "FREE delivery "
+    },
+    {
+      "role": "text",
+      "name": "Tue, 13 Aug "
+    },
+    {
+      "role": "text",
+      "name": "on \u20b9499 of items fulfilled by Amazon"
+    },
+    {
+      "role": "link",
+      "name": "Kindle Edition",
+      "keyshortcuts": "786"
+    },
+    {
+      "role": "link",
+      "name": "\u20b9189.05",
+      "keyshortcuts": "789"
+    },
+    {
+      "role": "text",
+      "name": "(10% off)"
+    },
+    {
+      "role": "text",
+      "name": "Available instantly"
+    },
+    {
+      "role": "link",
+      "name": "Zero to One: Notes on Start Ups, or How to Build the Future+Funding Your Startup: And Other Nightmares",
+      "keyshortcuts": "818"
+    },
+    {
+      "role": "link",
+      "name": "Zero to One: Notes on Start Ups, or How to Build the Future+Funding Your Startup: And Other Nightmares",
+      "keyshortcuts": "826"
+    },
+    {
+      "role": "button",
+      "name": "5.0 out of 5 stars",
+      "keyshortcuts": "832"
+    },
+    {
+      "role": "link",
+      "name": "2",
+      "keyshortcuts": "837"
+    },
+    {
+      "role": "link",
+      "name": "Product Bundle",
+      "keyshortcuts": "844"
+    },
+    {
+      "role": "link",
+      "name": "\u20b9603 List: \u20b9998",
+      "keyshortcuts": "847"
+    },
+    {
+      "role": "text",
+      "name": "(39% off)"
+    },
+    {
+      "role": "text",
+      "name": "FREE delivery"
+    },
+    {
+      "role": "link",
+      "name": "Zero to One: Notes on Start Ups, or How to Build the Future+Coffee Can Investing: The Low Risk Road to Stupendous Wealth",
+      "keyshortcuts": "881"
+    },
+    {
+      "role": "link",
+      "name": "Zero to One: Notes on Start Ups, or How to Build the Future+Coffee Can Investing: The Low Risk Road to Stupendous Wealth",
+      "keyshortcuts": "889"
+    },
+    {
+      "role": "button",
+      "name": "4.6 out of 5 stars",
+      "keyshortcuts": "895"
+    },
+    {
+      "role": "link",
+      "name": "3",
+      "keyshortcuts": "900"
+    },
+    {
+      "role": "link",
+      "name": "Product Bundle",
+      "keyshortcuts": "907"
+    },
+    {
+      "role": "link",
+      "name": "\u20b9574 List: \u20b91,098",
+      "keyshortcuts": "910"
+    },
+    {
+      "role": "text",
+      "name": "(47% off)"
+    },
+    {
+      "role": "text",
+      "name": "FREE delivery"
+    },
+    {
+      "role": "link",
+      "name": "Zero to One: Notes on Start Ups, or How to Build the Future+The Unusual Billionaires",
+      "keyshortcuts": "944"
+    },
+    {
+      "role": "link",
+      "name": "Zero to One: Notes on Start Ups, or How to Build the Future+The Unusual Billionaires",
+      "keyshortcuts": "952"
+    },
+    {
+      "role": "link",
+      "name": "Product Bundle",
+      "keyshortcuts": "959"
+    },
+    {
+      "role": "link",
+      "name": "\u20b9602 List: \u20b9998",
+      "keyshortcuts": "962"
+    },
+    {
+      "role": "text",
+      "name": "(39% off)"
+    },
+    {
+      "role": "text",
+      "name": "FREE delivery"
+    },
+    {
+      "role": "link",
+      "name": "Zero To One Hindi",
+      "keyshortcuts": "996"
+    },
+    {
+      "role": "link",
+      "name": "Zero To One Hindi",
+      "keyshortcuts": "1004"
+    },
+    {
+      "role": "text",
+      "name": "Hindi Edition"
+    },
+    {
+      "role": "text",
+      "name": " | "
+    },
+    {
+      "role": "text",
+      "name": "by "
+    },
+    {
+      "role": "link",
+      "name": "Peter Thiel",
+      "keyshortcuts": "1013"
+    },
+    {
+      "role": "text",
+      "name": " | "
+    },
+    {
+      "role": "text",
+      "name": "31 December 2023"
+    },
+    {
+      "role": "link",
+      "name": "Paperback",
+      "keyshortcuts": "1023"
+    },
+    {
+      "role": "link",
+      "name": "\u20b9225 M.R.P: \u20b9299",
+      "keyshortcuts": "1026"
+    },
+    {
+      "role": "text",
+      "name": "(25% off)"
+    },
+    {
+      "role": "text",
+      "name": "Delivery "
+    },
+    {
+      "role": "text",
+      "name": "16 - 20 Aug"
+    },
+    {
+      "role": "text",
+      "name": "Or fastest delivery "
+    },
+    {
+      "role": "text",
+      "name": "12 - 16 Aug"
+    },
+    {
+      "role": "text",
+      "name": "Only 2 left in stock."
+    },
+    {
+      "role": "link",
+      "name": "Zero To One Book In English Edition BY Peter Thiel",
+      "keyshortcuts": "1069"
+    },
+    {
+      "role": "link",
+      "name": "Zero To One Book In English Edition BY Peter Thiel",
+      "keyshortcuts": "1077"
+    },
+    {
+      "role": "text",
+      "name": "by "
+    },
+    {
+      "role": "text",
+      "name": "Business Book"
+    },
+    {
+      "role": "text",
+      "name": " | "
+    },
+    {
+      "role": "text",
+      "name": "1 January 2014"
+    },
+    {
+      "role": "button",
+      "name": "5.0 out of 5 stars",
+      "keyshortcuts": "1091"
+    },
+    {
+      "role": "link",
+      "name": "1",
+      "keyshortcuts": "1096"
+    },
+    {
+      "role": "link",
+      "name": "Perfect Paperback",
+      "keyshortcuts": "1103"
+    },
+    {
+      "role": "text",
+      "name": "Currently unavailable."
+    },
+    {
+      "role": "text",
+      "name": "Ages: 9+ years, from publishers"
+    },
+    {
+      "role": "link",
+      "name": "Zero to One Marathi",
+      "keyshortcuts": "1130"
+    },
+    {
+      "role": "link",
+      "name": "Zero to One Marathi",
+      "keyshortcuts": "1138"
+    },
+    {
+      "role": "text",
+      "name": "by "
+    },
+    {
+      "role": "link",
+      "name": "Peter Thiel",
+      "keyshortcuts": "1143"
+    },
+    {
+      "role": "text",
+      "name": " | "
+    },
+    {
+      "role": "text",
+      "name": "1 January 2018"
+    },
+    {
+      "role": "link",
+      "name": "Paperback",
+      "keyshortcuts": "1153"
+    },
+    {
+      "role": "link",
+      "name": "\u20b9194 M.R.P: \u20b9299",
+      "keyshortcuts": "1156"
+    },
+    {
+      "role": "text",
+      "name": "(35% off)"
+    },
+    {
+      "role": "text",
+      "name": "Delivery "
+    },
+    {
+      "role": "text",
+      "name": "16 - 20 Aug"
+    },
+    {
+      "role": "text",
+      "name": "Or fastest delivery "
+    },
+    {
+      "role": "text",
+      "name": "12 - 16 Aug"
+    },
+    {
+      "role": "text",
+      "name": "Ages: 5+ years, from publishers"
+    },
+    {
+      "role": "link",
+      "name": "Zero to One: Notes on Start Ups, or How to Build the Future (Marathi)",
+      "keyshortcuts": "1199"
+    },
+    {
+      "role": "link",
+      "name": "Zero to One: Notes on Start Ups, or How to Build the Future (Marathi)",
+      "keyshortcuts": "1207"
+    },
+    {
+      "role": "text",
+      "name": "Marathi Edition"
+    },
+    {
+      "role": "button",
+      "name": "4.7 out of 5 stars",
+      "keyshortcuts": "1216"
+    },
+    {
+      "role": "link",
+      "name": "23",
+      "keyshortcuts": "1221"
+    },
+    {
+      "role": "link",
+      "name": "Paperback",
+      "keyshortcuts": "1228"
+    },
+    {
+      "role": "link",
+      "name": "\u20b9221 M.R.P: \u20b9299",
+      "keyshortcuts": "1231"
+    },
+    {
+      "role": "text",
+      "name": "(26% off)"
+    },
+    {
+      "role": "text",
+      "name": "FREE delivery "
+    },
+    {
+      "role": "text",
+      "name": "Mon, 12 Aug"
+    },
+    {
+      "role": "text",
+      "name": "Only 1 left in stock."
+    },
+    {
+      "role": "text",
+      "name": "More Buying Choices"
+    },
+    {
+      "role": "LineBreak",
+      "name": "\n",
+      "keyshortcuts": "1256"
+    },
+    {
+      "role": "text",
+      "name": "\u20b9185"
+    },
+    {
+      "role": "link",
+      "name": "(8 new offers)",
+      "keyshortcuts": "1260"
+    },
+    {
+      "role": "link",
+      "name": "Sponsored Ad - The Psychology of Money \u2013 Deluxe Edition",
+      "keyshortcuts": "1284"
+    },
+    {
+      "role": "button",
+      "name": "View Sponsored information or leave ad feedback",
+      "keyshortcuts": "1293"
+    },
+    {
+      "role": "link",
+      "name": "The Psychology of Money \u2013 Deluxe Edition",
+      "keyshortcuts": "1307"
+    },
+    {
+      "role": "text",
+      "name": "by "
+    },
+    {
+      "role": "link",
+      "name": "Morgan Housel",
+      "keyshortcuts": "1312"
+    },
+    {
+      "role": "text",
+      "name": " | "
+    },
+    {
+      "role": "text",
+      "name": "15 July 2021"
+    },
+    {
+      "role": "button",
+      "name": "4.6 out of 5 stars",
+      "keyshortcuts": "1321"
+    },
+    {
+      "role": "link",
+      "name": "64,911",
+      "keyshortcuts": "1326"
+    },
+    {
+      "role": "link",
+      "name": "Hardcover",
+      "keyshortcuts": "1333"
+    },
+    {
+      "role": "link",
+      "name": "Great Freedom Sale",
+      "keyshortcuts": "1335"
+    },
+    {
+      "role": "link",
+      "name": "\u20b9379 M.R.P: \u20b9599",
+      "keyshortcuts": "1342"
+    },
+    {
+      "role": "text",
+      "name": "(37% off)"
+    },
+    {
+      "role": "text",
+      "name": "FREE delivery "
+    },
+    {
+      "role": "text",
+      "name": "Mon, 12 Aug "
+    },
+    {
+      "role": "text",
+      "name": "on \u20b9499 of items fulfilled by Amazon"
+    },
+    {
+      "role": "text",
+      "name": "Or fastest delivery "
+    },
+    {
+      "role": "text",
+      "name": "Today"
+    },
+    {
+      "role": "text",
+      "name": "Customer suggested age: 17 years and up"
+    },
+    {
+      "role": "link",
+      "name": "Best seller in Urban & Regional",
+      "keyshortcuts": "1386",
+      "children": [
+        {
+          "role": "group",
+          "name": "Best seller in Urban & Regional",
+          "keyshortcuts": "1389"
+        }
+      ]
+    },
+    {
+      "role": "link",
+      "name": "Sponsored Ad - The Richest Man In Babylon by George S. Clason - Financial Wisdom | A Masterpiece on Money Management | Fin...",
+      "keyshortcuts": "1397"
+    },
+    {
+      "role": "button",
+      "name": "View Sponsored information or leave ad feedback",
+      "keyshortcuts": "1406"
+    },
+    {
+      "role": "link",
+      "name": "The Richest Man In Babylon by George S. Clason - Financial Wisdom | A Masterpiece on Money Management | Financial Success | Timeless Lessons | Wealth-Building Strategies | Financial Independence | A Bestselling Finance Book",
+      "keyshortcuts": "1420"
+    },
+    {
+      "role": "text",
+      "name": "by "
+    },
+    {
+      "role": "link",
+      "name": "George S. Clason",
+      "keyshortcuts": "1425"
+    },
+    {
+      "role": "text",
+      "name": " | "
+    },
+    {
+      "role": "text",
+      "name": "1 August 2018"
+    },
+    {
+      "role": "button",
+      "name": "4.5 out of 5 stars",
+      "keyshortcuts": "1434"
+    },
+    {
+      "role": "link",
+      "name": "45,628",
+      "keyshortcuts": "1439"
+    },
+    {
+      "role": "link",
+      "name": "Paperback",
+      "keyshortcuts": "1446"
+    },
+    {
+      "role": "link",
+      "name": "Great Freedom Sale",
+      "keyshortcuts": "1448"
+    },
+    {
+      "role": "link",
+      "name": "\u20b9129 M.R.P: \u20b9149",
+      "keyshortcuts": "1455"
+    },
+    {
+      "role": "text",
+      "name": "(13% off)"
+    },
+    {
+      "role": "text",
+      "name": "FREE delivery "
+    },
+    {
+      "role": "text",
+      "name": "Mon, 12 Aug "
+    },
+    {
+      "role": "text",
+      "name": "on \u20b9499 of items fulfilled by Amazon"
+    },
+    {
+      "role": "text",
+      "name": "Or fastest delivery "
+    },
+    {
+      "role": "text",
+      "name": "Tomorrow, 9 Aug"
+    },
+    {
+      "role": "text",
+      "name": "Customer suggested age: 16 years and up"
+    },
+    {
+      "role": "link",
+      "name": "Zero To One",
+      "keyshortcuts": "1499"
+    },
+    {
+      "role": "link",
+      "name": "Zero To One",
+      "keyshortcuts": "1507"
+    },
+    {
+      "role": "text",
+      "name": "by "
+    },
+    {
+      "role": "text",
+      "name": "Abu Talha Shaikh"
+    },
+    {
+      "role": "link",
+      "name": "Podcast",
+      "keyshortcuts": "1518"
+    },
+    {
+      "role": "link",
+      "name": "\u20b90",
+      "keyshortcuts": "1521"
+    },
+    {
+      "role": "link",
+      "name": "Zero to One: Notes on Start Ups, or How to Build the Future+Rich Dads Cashflow Quadrant",
+      "keyshortcuts": "1544"
+    },
+    {
+      "role": "link",
+      "name": "Zero to One: Notes on Start Ups, or How to Build the Future+Rich Dads Cashflow Quadrant",
+      "keyshortcuts": "1552"
+    },
+    {
+      "role": "button",
+      "name": "5.0 out of 5 stars",
+      "keyshortcuts": "1558"
+    },
+    {
+      "role": "link",
+      "name": "1",
+      "keyshortcuts": "1563"
+    },
+    {
+      "role": "link",
+      "name": "Product Bundle",
+      "keyshortcuts": "1570"
+    },
+    {
+      "role": "link",
+      "name": "\u20b9684 List: \u20b91,149",
+      "keyshortcuts": "1573"
+    },
+    {
+      "role": "text",
+      "name": "(40% off)"
+    },
+    {
+      "role": "text",
+      "name": "FREE delivery"
+    },
+    {
+      "role": "link",
+      "name": "Zero to One: Notes on Start Ups, or How to Build the Future+The Courage To Be Disliked: How to free yourself, change your ...",
+      "keyshortcuts": "1607"
+    },
+    {
+      "role": "link",
+      "name": "Zero to One: Notes on Start Ups, or How to Build the Future+The Courage To Be Disliked: How to free yourself, change your life and achieve real happiness (Courage To series)",
+      "keyshortcuts": "1615"
+    },
+    {
+      "role": "button",
+      "name": "5.0 out of 5 stars",
+      "keyshortcuts": "1621"
+    },
+    {
+      "role": "link",
+      "name": "1",
+      "keyshortcuts": "1626"
+    },
+    {
+      "role": "link",
+      "name": "Product Bundle",
+      "keyshortcuts": "1633"
+    },
+    {
+      "role": "link",
+      "name": "\u20b9606 List: \u20b91,098",
+      "keyshortcuts": "1636"
+    },
+    {
+      "role": "text",
+      "name": "(44% off)"
+    },
+    {
+      "role": "text",
+      "name": "FREE delivery"
+    },
+    {
+      "role": "link",
+      "name": "Zero to One: Notes on Start Ups, or How to Build the Future+12 Rules for Life: An Antidote to Chaos",
+      "keyshortcuts": "1670"
+    },
+    {
+      "role": "link",
+      "name": "Zero to One: Notes on Start Ups, or How to Build the Future+12 Rules for Life: An Antidote to Chaos",
+      "keyshortcuts": "1678"
+    },
+    {
+      "role": "button",
+      "name": "5.0 out of 5 stars",
+      "keyshortcuts": "1684"
+    },
+    {
+      "role": "link",
+      "name": "2",
+      "keyshortcuts": "1689"
+    },
+    {
+      "role": "link",
+      "name": "Product Bundle",
+      "keyshortcuts": "1696"
+    },
+    {
+      "role": "link",
+      "name": "\u20b9774 List: \u20b91,198",
+      "keyshortcuts": "1699"
+    },
+    {
+      "role": "text",
+      "name": "(35% off)"
+    },
+    {
+      "role": "text",
+      "name": "FREE delivery"
+    },
+    {
+      "role": "link",
+      "name": "Zero to One + Start With Why",
+      "keyshortcuts": "1733"
+    },
+    {
+      "role": "link",
+      "name": "Zero to One + Start With Why",
+      "keyshortcuts": "1741"
+    },
+    {
+      "role": "button",
+      "name": "5.0 out of 5 stars",
+      "keyshortcuts": "1747"
+    },
+    {
+      "role": "link",
+      "name": "7",
+      "keyshortcuts": "1752"
+    },
+    {
+      "role": "link",
+      "name": "Product Bundle",
+      "keyshortcuts": "1759"
+    },
+    {
+      "role": "link",
+      "name": "\u20b9717 List: \u20b91,198",
+      "keyshortcuts": "1762"
+    },
+    {
+      "role": "text",
+      "name": "(40% off)"
+    },
+    {
+      "role": "text",
+      "name": "FREE delivery"
+    },
+    {
+      "role": "link",
+      "name": "Zero to One: Notes on Start Ups, or How to Build the Future+The Brain: The Story of You",
+      "keyshortcuts": "1796"
+    },
+    {
+      "role": "link",
+      "name": "Zero to One: Notes on Start Ups, or How to Build the Future+The Brain: The Story of You",
+      "keyshortcuts": "1804"
+    },
+    {
+      "role": "link",
+      "name": "Product Bundle",
+      "keyshortcuts": "1811"
+    },
+    {
+      "role": "link",
+      "name": "\u20b9725 List: \u20b91,098",
+      "keyshortcuts": "1814"
+    },
+    {
+      "role": "text",
+      "name": "(33% off)"
+    },
+    {
+      "role": "text",
+      "name": "FREE delivery"
+    },
+    {
+      "role": "link",
+      "name": "Best seller in Macroeconomics",
+      "keyshortcuts": "1848",
+      "children": [
+        {
+          "role": "group",
+          "name": "Best seller in Macroeconomics",
+          "keyshortcuts": "1851"
+        }
+      ]
+    },
+    {
+      "role": "link",
+      "name": "Sponsored Ad - The Richest Man In Babylon by George S. Clason [Original Edition (Complete), Premium Paperback]",
+      "keyshortcuts": "1859"
+    },
+    {
+      "role": "button",
+      "name": "View Sponsored information or leave ad feedback",
+      "keyshortcuts": "1868"
+    },
+    {
+      "role": "link",
+      "name": "The Richest Man In Babylon by George S. Clason [Original Edition (Complete), Premium Paperback]",
+      "keyshortcuts": "1882"
+    },
+    {
+      "role": "text",
+      "name": "by "
+    },
+    {
+      "role": "link",
+      "name": "George S. Clason",
+      "keyshortcuts": "1887"
+    },
+    {
+      "role": "text",
+      "name": " | "
+    },
+    {
+      "role": "text",
+      "name": "10 October 2021"
+    },
+    {
+      "role": "button",
+      "name": "4.5 out of 5 stars",
+      "keyshortcuts": "1896"
+    },
+    {
+      "role": "link",
+      "name": "45,628",
+      "keyshortcuts": "1901"
+    },
+    {
+      "role": "link",
+      "name": "Paperback",
+      "keyshortcuts": "1908"
+    },
+    {
+      "role": "link",
+      "name": "Great Freedom Sale",
+      "keyshortcuts": "1910"
+    },
+    {
+      "role": "link",
+      "name": "\u20b9104 M.R.P: \u20b9150",
+      "keyshortcuts": "1917"
+    },
+    {
+      "role": "text",
+      "name": "(31% off)"
+    },
+    {
+      "role": "text",
+      "name": "FREE delivery "
+    },
+    {
+      "role": "text",
+      "name": "Sat, 10 Aug "
+    },
+    {
+      "role": "text",
+      "name": "on \u20b9499 of items fulfilled by Amazon"
+    },
+    {
+      "role": "text",
+      "name": "Or fastest delivery "
+    },
+    {
+      "role": "text",
+      "name": "Today"
+    },
+    {
+      "role": "text",
+      "name": "Customer suggested age: 16 years and up"
+    },
+    {
+      "role": "link",
+      "name": "Sponsored Ad - Funding Your Startup and Other Nightmare: And Other Nightmares",
+      "keyshortcuts": "1963"
+    },
+    {
+      "role": "button",
+      "name": "View Sponsored information or leave ad feedback",
+      "keyshortcuts": "1972"
+    },
+    {
+      "role": "link",
+      "name": "Funding Your Startup and Other Nightmare: And Other Nightmares",
+      "keyshortcuts": "1986"
+    },
+    {
+      "role": "text",
+      "name": "by "
+    },
+    {
+      "role": "link",
+      "name": "Dhruv Nath",
+      "keyshortcuts": "1991"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "text",
+      "name": "and "
+    },
+    {
+      "role": "text",
+      "name": "Sushanto Mitra"
+    },
+    {
+      "role": "text",
+      "name": " | "
+    },
+    {
+      "role": "text",
+      "name": "14 September 2020"
+    },
+    {
+      "role": "button",
+      "name": "4.5 out of 5 stars",
+      "keyshortcuts": "2002"
+    },
+    {
+      "role": "link",
+      "name": "561",
+      "keyshortcuts": "2007"
+    },
+    {
+      "role": "link",
+      "name": "Paperback",
+      "keyshortcuts": "2014"
+    },
+    {
+      "role": "link",
+      "name": "Great Freedom Sale",
+      "keyshortcuts": "2016"
+    },
+    {
+      "role": "link",
+      "name": "\u20b9254 M.R.P: \u20b9399",
+      "keyshortcuts": "2023"
+    },
+    {
+      "role": "text",
+      "name": "(36% off)"
+    },
+    {
+      "role": "text",
+      "name": "FREE delivery "
+    },
+    {
+      "role": "text",
+      "name": "Mon, 12 Aug "
+    },
+    {
+      "role": "text",
+      "name": "on \u20b9499 of items fulfilled by Amazon"
+    },
+    {
+      "role": "text",
+      "name": "Or fastest delivery "
+    },
+    {
+      "role": "text",
+      "name": "Today"
+    },
+    {
+      "role": "link",
+      "name": "Sponsored Ad - Useful Books to Learn Share Market | Share Market Me Abdul Zero Se Hero Kaise Bana + Stock Market Me Maine ...",
+      "keyshortcuts": "2066"
+    },
+    {
+      "role": "button",
+      "name": "View Sponsored information or leave ad feedback",
+      "keyshortcuts": "2075"
+    },
+    {
+      "role": "link",
+      "name": "Useful Books to Learn Share Market | Share Market Me Abdul Zero Se Hero Kaise Bana + Stock Market Me Maine Zero Se 10 Crore Kaise Kamaye | Set of 2 Books in Hindi",
+      "keyshortcuts": "2089"
+    },
+    {
+      "role": "text",
+      "name": "Hindi Edition"
+    },
+    {
+      "role": "text",
+      "name": " | "
+    },
+    {
+      "role": "text",
+      "name": "by "
+    },
+    {
+      "role": "text",
+      "name": "Mahesh Chandra Kaushik"
+    },
+    {
+      "role": "text",
+      "name": " and "
+    },
+    {
+      "role": "text",
+      "name": "Nicolas Darvas"
+    },
+    {
+      "role": "text",
+      "name": " | "
+    },
+    {
+      "role": "text",
+      "name": "8 November 2023"
+    },
+    {
+      "role": "link",
+      "name": "Paperback",
+      "keyshortcuts": "2110"
+    },
+    {
+      "role": "link",
+      "name": "\u20b9350 M.R.P: \u20b9650",
+      "keyshortcuts": "2113"
+    },
+    {
+      "role": "text",
+      "name": "(46% off)"
+    },
+    {
+      "role": "text",
+      "name": "FREE delivery "
+    },
+    {
+      "role": "text",
+      "name": "Mon, 12 Aug "
+    },
+    {
+      "role": "text",
+      "name": "on \u20b9499 of items fulfilled by Amazon"
+    },
+    {
+      "role": "text",
+      "name": "Or fastest delivery "
+    },
+    {
+      "role": "text",
+      "name": "Tomorrow, 9 Aug"
+    },
+    {
+      "role": "link",
+      "name": "Sponsored Ad - Trade and Grow Rich: Beginners to Advanced Traders + Trading Chart Pattern + Stock Market Research (A Hindi...",
+      "keyshortcuts": "2156"
+    },
+    {
+      "role": "button",
+      "name": "View Sponsored information or leave ad feedback",
+      "keyshortcuts": "2165"
+    },
+    {
+      "role": "link",
+      "name": "Trade and Grow Rich: Beginners to Advanced Traders + Trading Chart Pattern + Stock Market Research (A Hindi Share Market Book to Learn Trading & Investment Strategies with Precautions in Stocks)",
+      "keyshortcuts": "2179"
+    },
+    {
+      "role": "text",
+      "name": "Hindi Edition"
+    },
+    {
+      "role": "text",
+      "name": " | "
+    },
+    {
+      "role": "text",
+      "name": "by "
+    },
+    {
+      "role": "link",
+      "name": "Indrazith Shantharaj",
+      "keyshortcuts": "2188"
+    },
+    {
+      "role": "text",
+      "name": " "
+    },
+    {
+      "role": "text",
+      "name": "and "
+    },
+    {
+      "role": "text",
+      "name": "Kirankumar Nayak"
+    },
+    {
+      "role": "text",
+      "name": " | "
+    },
+    {
+      "role": "text",
+      "name": "10 August 2023"
+    },
+    {
+      "role": "button",
+      "name": "3.9 out of 5 stars",
+      "keyshortcuts": "2199"
+    },
+    {
+      "role": "link",
+      "name": "27",
+      "keyshortcuts": "2204"
+    },
+    {
+      "role": "link",
+      "name": "Paperback",
+      "keyshortcuts": "2211"
+    },
+    {
+      "role": "link",
+      "name": "Great Freedom Sale",
+      "keyshortcuts": "2213"
+    },
+    {
+      "role": "link",
+      "name": "\u20b9165 M.R.P: \u20b9300",
+      "keyshortcuts": "2220"
+    },
+    {
+      "role": "text",
+      "name": "(45% off)"
+    },
+    {
+      "role": "text",
+      "name": "Save 2%"
+    },
+    {
+      "role": "text",
+      "name": "with coupon"
+    },
+    {
+      "role": "text",
+      "name": "FREE delivery "
+    },
+    {
+      "role": "text",
+      "name": "Mon, 12 Aug "
+    },
+    {
+      "role": "text",
+      "name": "on \u20b9499 of items fulfilled by Amazon"
+    },
+    {
+      "role": "text",
+      "name": "Or fastest delivery "
+    },
+    {
+      "role": "text",
+      "name": "Today"
+    },
+    {
+      "role": "link",
+      "name": "Sponsored video, click to navigate to featured page.",
+      "keyshortcuts": "2269"
+    },
+    {
+      "role": "link",
+      "name": "DIET GEAR Energy drink with Electrolytes 80 Effervescent Tablets (20 litre) Zero Sugar, Zero Caffeine | 7 Essential Electr...",
+      "keyshortcuts": "2331"
+    },
+    {
+      "role": "text",
+      "name": "Sponsored"
+    },
+    {
+      "role": "link",
+      "name": "DIET GEAR Energy drink with Electrolytes 80 Effervescent Tablets (20 litre) Zero Sugar, Zero Caffeine | 7 Essential Electrolyte Salts (Na, K, Mg, Ca, Cl, Zn, SO4) + Vitamin C | Lemon",
+      "keyshortcuts": "2344"
+    },
+    {
+      "role": "button",
+      "name": "4.5 out of 5 stars",
+      "keyshortcuts": "2350"
+    },
+    {
+      "role": "link",
+      "name": "110",
+      "keyshortcuts": "2355"
+    },
+    {
+      "role": "text",
+      "name": "50+ bought in past month"
+    },
+    {
+      "role": "link",
+      "name": "\u20b9936 (\u20b911.70/count) M.R.P: \u20b91,396",
+      "keyshortcuts": "2365"
+    },
+    {
+      "role": "text",
+      "name": "(33% off)"
+    },
+    {
+      "role": "text",
+      "name": "Save \u20b910"
+    },
+    {
+      "role": "text",
+      "name": "with coupon"
+    },
+    {
+      "role": "text",
+      "name": "Save 5% more with Subscribe & Save"
+    },
+    {
+      "role": "text",
+      "name": "Get it by "
+    },
+    {
+      "role": "text",
+      "name": "Today, 8 August"
+    },
+    {
+      "role": "text",
+      "name": "FREE Delivery by Amazon"
+    },
+    {
+      "role": "text",
+      "name": "Related searches"
+    },
+    {
+      "role": "link",
+      "name": "the lean startup",
+      "keyshortcuts": "2419"
+    },
+    {
+      "role": "link",
+      "name": "the personal mba",
+      "keyshortcuts": "2427"
+    },
+    {
+      "role": "link",
+      "name": "blue ocean strategy",
+      "keyshortcuts": "2438"
+    },
+    {
+      "role": "link",
+      "name": "how to win friends and influence people",
+      "keyshortcuts": "2446"
+    },
+    {
+      "role": "link",
+      "name": "atomic habits",
+      "keyshortcuts": "2457"
+    },
+    {
+      "role": "link",
+      "name": "the hard thing about hard things",
+      "keyshortcuts": "2465"
+    },
+    {
+      "role": "text",
+      "name": "Previous"
+    },
+    {
+      "role": "text",
+      "name": "1"
+    },
+    {
+      "role": "link",
+      "name": "Go to page 2",
+      "keyshortcuts": "2480"
+    },
+    {
+      "role": "link",
+      "name": "Go to page 3",
+      "keyshortcuts": "2481"
+    },
+    {
+      "role": "text",
+      "name": "20"
+    },
+    {
+      "role": "link",
+      "name": "Go to next page, page 2",
+      "keyshortcuts": "2486"
+    },
+    {
+      "role": "heading",
+      "name": "Books related to your search",
+      "keyshortcuts": "2497",
+      "level": 2
+    },
+    {
+      "role": "button",
+      "name": "Leave feedback on Sponsored ad",
+      "keyshortcuts": "2502"
+    },
+    {
+      "role": "link",
+      "name": "Sponsored ad from HarperCollins Publishers. \"Management And Business Books By Anil Lamba.\" Shop now.",
+      "keyshortcuts": "2514"
+    },
+    {
+      "role": "link",
+      "name": "Sponsored ad from Wiley. \"Mergers and Acquisitions Books.\" Shop now.",
+      "keyshortcuts": "2540"
+    },
+    {
+      "role": "link",
+      "name": "Sponsored ad from Vibrant Publishers. \"Social Media & Digital Marketing for Managers.\" Shop now.",
+      "keyshortcuts": "2566"
+    },
+    {
+      "role": "text",
+      "name": "Need help?"
+    },
+    {
+      "role": "link",
+      "name": "Visit the help section",
+      "keyshortcuts": "2604"
+    },
+    {
+      "role": "text",
+      "name": " or "
+    },
+    {
+      "role": "link",
+      "name": "contact us",
+      "keyshortcuts": "2606"
+    },
+    {
+      "role": "Iframe",
+      "name": "Sponsored ad",
+      "keyshortcuts": "2616"
+    },
+    {
+      "role": "generic",
+      "name": "Leave feedback on Sponsored advertisement",
+      "keyshortcuts": "2620"
+    },
+    {
+      "role": "link",
+      "name": "Go back to filtering menu",
+      "description": "tab to go back to filtering menu",
+      "keyshortcuts": "2627"
+    },
+    {
+      "role": "link",
+      "name": "Skip to main search results",
+      "description": "tab to skip to main search results",
+      "keyshortcuts": "2632"
+    },
+    {
+      "role": "generic",
+      "name": "",
+      "keyshortcuts": "2633"
+    },
+    {
+      "role": "text",
+      "name": "Delivery Day"
+    },
+    {
+      "role": "link",
+      "name": "Get It Today",
+      "keyshortcuts": "2647",
+      "children": [
+        {
+          "role": "checkbox",
+          "name": "",
+          "keyshortcuts": "2650",
+          "checked": false
+        },
+        {
+          "role": "text",
+          "name": "Get It Today"
+        }
+      ]
+    },
+    {
+      "role": "link",
+      "name": "Get It by Tomorrow",
+      "keyshortcuts": "2657",
+      "children": [
+        {
+          "role": "checkbox",
+          "name": "",
+          "keyshortcuts": "2660",
+          "checked": false
+        },
+        {
+          "role": "text",
+          "name": "Get It by Tomorrow"
+        }
+      ]
+    },
+    {
+      "role": "link",
+      "name": "Get It in 2 Days",
+      "keyshortcuts": "2667",
+      "children": [
+        {
+          "role": "checkbox",
+          "name": "",
+          "keyshortcuts": "2670",
+          "checked": false
+        },
+        {
+          "role": "text",
+          "name": "Get It in 2 Days"
+        }
+      ]
+    },
+    {
+      "role": "text",
+      "name": "Kindle Unlimited Eligibility"
+    },
+    {
+      "role": "link",
+      "name": "Kindle Unlimited Eligible",
+      "keyshortcuts": "2682",
+      "children": [
+        {
+          "role": "checkbox",
+          "name": "",
+          "keyshortcuts": "2685",
+          "checked": false
+        },
+        {
+          "role": "image",
+          "name": "Kindle Unlimited Eligible",
+          "keyshortcuts": "2688"
+        }
+      ]
+    },
+    {
+      "role": "text",
+      "name": "Category"
+    },
+    {
+      "role": "link",
+      "name": "Books",
+      "keyshortcuts": "2697"
+    },
+    {
+      "role": "link",
+      "name": "Analysis & Strategy",
+      "keyshortcuts": "2701"
+    },
+    {
+      "role": "link",
+      "name": "Economics Books",
+      "keyshortcuts": "2705"
+    },
+    {
+      "role": "link",
+      "name": "Business Development & Entrepreneurship",
+      "keyshortcuts": "2709"
+    },
+    {
+      "role": "link",
+      "name": "Audible Books & Originals",
+      "keyshortcuts": "2714"
+    },
+    {
+      "role": "link",
+      "name": "Entrepreneurship",
+      "keyshortcuts": "2718"
+    },
+    {
+      "role": "link",
+      "name": "Business Management",
+      "keyshortcuts": "2722"
+    },
+    {
+      "role": "text",
+      "name": "Customer Review"
+    },
+    {
+      "role": "link",
+      "name": "4 Stars & Up",
+      "keyshortcuts": "2732"
+    },
+    {
+      "role": "text",
+      "name": "Price"
+    },
+    {
+      "role": "text",
+      "name": "\u20b90"
+    },
+    {
+      "role": "text",
+      "name": "\u20b922,400+"
+    },
+    {
+      "role": "slider",
+      "name": "Minimum",
+      "keyshortcuts": "2760",
+      "valuetext": "\u20b90",
+      "valuemin": 0,
+      "valuemax": 186,
+      "orientation": "horizontal",
+      "value": 0
+    },
+    {
+      "role": "slider",
+      "name": "Maximum",
+      "keyshortcuts": "2762",
+      "valuetext": "\u20b922,400+",
+      "valuemin": 0,
+      "valuemax": 186,
+      "orientation": "horizontal",
+      "value": 186
+    },
+    {
+      "role": "button",
+      "name": "Go - Submit price range",
+      "keyshortcuts": "2766"
+    },
+    {
+      "role": "text",
+      "name": "Deals & Discounts"
+    },
+    {
+      "role": "link",
+      "name": "All Discounts",
+      "keyshortcuts": "2776"
+    },
+    {
+      "role": "link",
+      "name": "Today's Deals",
+      "keyshortcuts": "2781"
+    },
+    {
+      "role": "text",
+      "name": "Item Condition"
+    },
+    {
+      "role": "link",
+      "name": "New",
+      "keyshortcuts": "2791"
+    },
+    {
+      "role": "link",
+      "name": "Used",
+      "keyshortcuts": "2796"
+    },
+    {
+      "role": "text",
+      "name": "Format"
+    },
+    {
+      "role": "link",
+      "name": "Audiobook",
+      "keyshortcuts": "2805",
+      "children": [
+        {
+          "role": "checkbox",
+          "name": "",
+          "keyshortcuts": "2808",
+          "checked": false
+        },
+        {
+          "role": "text",
+          "name": "Audiobook"
+        }
+      ]
+    },
+    {
+      "role": "link",
+      "name": "Audible Audio Edition",
+      "keyshortcuts": "2815",
+      "children": [
+        {
+          "role": "checkbox",
+          "name": "",
+          "keyshortcuts": "2818",
+          "checked": false
+        },
+        {
+          "role": "text",
+          "name": "Audible Audio Edition"
+        }
+      ]
+    },
+    {
+      "role": "link",
+      "name": "Board Book",
+      "keyshortcuts": "2825",
+      "children": [
+        {
+          "role": "checkbox",
+          "name": "",
+          "keyshortcuts": "2828",
+          "checked": false
+        },
+        {
+          "role": "text",
+          "name": "Board Book"
+        }
+      ]
+    },
+    {
+      "role": "link",
+      "name": "Bound",
+      "keyshortcuts": "2835",
+      "children": [
+        {
+          "role": "checkbox",
+          "name": "",
+          "keyshortcuts": "2838",
+          "checked": false
+        },
+        {
+          "role": "text",
+          "name": "Bound"
+        }
+      ]
+    },
+    {
+      "role": "link",
+      "name": "Bundle",
+      "keyshortcuts": "2845",
+      "children": [
+        {
+          "role": "checkbox",
+          "name": "",
+          "keyshortcuts": "2848",
+          "checked": false
+        },
+        {
+          "role": "text",
+          "name": "Bundle"
+        }
+      ]
+    },
+    {
+      "role": "link",
+      "name": "Hardcover",
+      "keyshortcuts": "2855",
+      "children": [
+        {
+          "role": "checkbox",
+          "name": "",
+          "keyshortcuts": "2858",
+          "checked": false
+        },
+        {
+          "role": "text",
+          "name": "Hardcover"
+        }
+      ]
+    },
+    {
+      "role": "link",
+      "name": "Kindle eBooks",
+      "keyshortcuts": "2865",
+      "children": [
+        {
+          "role": "checkbox",
+          "name": "",
+          "keyshortcuts": "2868",
+          "checked": false
+        },
+        {
+          "role": "text",
+          "name": "Kindle eBooks"
+        }
+      ]
+    },
+    {
+      "role": "button",
+      "name": "See more, Format",
+      "keyshortcuts": "2917"
+    },
+    {
+      "role": "text",
+      "name": "English & Indian Languages"
+    },
+    {
+      "role": "link",
+      "name": "English",
+      "keyshortcuts": "2927",
+      "children": [
+        {
+          "role": "checkbox",
+          "name": "",
+          "keyshortcuts": "2930",
+          "checked": false
+        },
+        {
+          "role": "text",
+          "name": "English"
+        }
+      ]
+    },
+    {
+      "role": "link",
+      "name": "Hindi",
+      "keyshortcuts": "2937",
+      "children": [
+        {
+          "role": "checkbox",
+          "name": "",
+          "keyshortcuts": "2940",
+          "checked": false
+        },
+        {
+          "role": "text",
+          "name": "Hindi"
+        }
+      ]
+    },
+    {
+      "role": "link",
+      "name": "Marathi",
+      "keyshortcuts": "2947",
+      "children": [
+        {
+          "role": "checkbox",
+          "name": "",
+          "keyshortcuts": "2950",
+          "checked": false
+        },
+        {
+          "role": "text",
+          "name": "Marathi"
+        }
+      ]
+    },
+    {
+      "role": "link",
+      "name": "Tamil",
+      "keyshortcuts": "2957",
+      "children": [
+        {
+          "role": "checkbox",
+          "name": "",
+          "keyshortcuts": "2960",
+          "checked": false
+        },
+        {
+          "role": "text",
+          "name": "Tamil"
+        }
+      ]
+    },
+    {
+      "role": "text",
+      "name": "New Arrivals"
+    },
+    {
+      "role": "link",
+      "name": "Last 30 days",
+      "keyshortcuts": "2971"
+    },
+    {
+      "role": "link",
+      "name": "Last 90 days",
+      "keyshortcuts": "2976"
+    },
+    {
+      "role": "link",
+      "name": "Next 90 days",
+      "keyshortcuts": "2981"
+    },
+    {
+      "role": "text",
+      "name": "Pay On Delivery"
+    },
+    {
+      "role": "link",
+      "name": "Eligible for Pay On Delivery",
+      "keyshortcuts": "2990",
+      "children": [
+        {
+          "role": "checkbox",
+          "name": "",
+          "keyshortcuts": "2993",
+          "checked": false
+        },
+        {
+          "role": "text",
+          "name": "Eligible for Pay On Delivery"
+        }
+      ]
+    },
+    {
+      "role": "text",
+      "name": "Author"
+    },
+    {
+      "role": "link",
+      "name": "Peter Thiel",
+      "keyshortcuts": "3004",
+      "children": [
+        {
+          "role": "checkbox",
+          "name": "",
+          "keyshortcuts": "3007",
+          "checked": false
+        },
+        {
+          "role": "text",
+          "name": "Peter Thiel"
+        }
+      ]
+    },
+    {
+      "role": "link",
+      "name": "Blake Masters",
+      "keyshortcuts": "3014",
+      "children": [
+        {
+          "role": "checkbox",
+          "name": "",
+          "keyshortcuts": "3017",
+          "checked": false
+        },
+        {
+          "role": "text",
+          "name": "Blake Masters"
+        }
+      ]
+    },
+    {
+      "role": "link",
+      "name": "Dale Carnegi",
+      "keyshortcuts": "3024",
+      "children": [
+        {
+          "role": "checkbox",
+          "name": "",
+          "keyshortcuts": "3027",
+          "checked": false
+        },
+        {
+          "role": "text",
+          "name": "Dale Carnegi"
+        }
+      ]
+    },
+    {
+      "role": "link",
+      "name": "Dale Carnegie",
+      "keyshortcuts": "3034",
+      "children": [
+        {
+          "role": "checkbox",
+          "name": "",
+          "keyshortcuts": "3037",
+          "checked": false
+        },
+        {
+          "role": "text",
+          "name": "Dale Carnegie"
+        }
+      ]
+    },
+    {
+      "role": "link",
+      "name": "Dhruv Nath",
+      "keyshortcuts": "3044",
+      "children": [
+        {
+          "role": "checkbox",
+          "name": "",
+          "keyshortcuts": "3047",
+          "checked": false
+        },
+        {
+          "role": "text",
+          "name": "Dhruv Nath"
+        }
+      ]
+    },
+    {
+      "role": "text",
+      "name": "Discount"
+    },
+    {
+      "role": "link",
+      "name": "10% Off or more",
+      "keyshortcuts": "3058"
+    },
+    {
+      "role": "link",
+      "name": "25% Off or more",
+      "keyshortcuts": "3063"
+    },
+    {
+      "role": "link",
+      "name": "35% Off or more",
+      "keyshortcuts": "3068"
+    },
+    {
+      "role": "link",
+      "name": "50% Off or more",
+      "keyshortcuts": "3073"
+    },
+    {
+      "role": "link",
+      "name": "60% Off or more",
+      "keyshortcuts": "3078"
+    },
+    {
+      "role": "link",
+      "name": "70% Off or more",
+      "keyshortcuts": "3083"
+    },
+    {
+      "role": "text",
+      "name": "Seller"
+    },
+    {
+      "role": "link",
+      "name": "Amazon Asia-Pacific Holdings Private Limited",
+      "keyshortcuts": "3092",
+      "children": [
+        {
+          "role": "checkbox",
+          "name": "",
+          "keyshortcuts": "3095",
+          "checked": false
+        },
+        {
+          "role": "text",
+          "name": "Amazon Asia-Pacific Holdings Private Limited"
+        }
+      ]
+    },
+    {
+      "role": "link",
+      "name": "Sunrise Book store",
+      "keyshortcuts": "3102",
+      "children": [
+        {
+          "role": "checkbox",
+          "name": "",
+          "keyshortcuts": "3105",
+          "checked": false
+        },
+        {
+          "role": "text",
+          "name": "Sunrise Book store"
+        }
+      ]
+    },
+    {
+      "role": "button",
+      "name": "See more, Seller",
+      "keyshortcuts": "3164"
+    },
+    {
+      "role": "text",
+      "name": "Availability"
+    },
+    {
+      "role": "link",
+      "name": "Include Out of Stock",
+      "keyshortcuts": "3174",
+      "children": [
+        {
+          "role": "checkbox",
+          "name": "",
+          "keyshortcuts": "3177",
+          "checked": false
+        },
+        {
+          "role": "text",
+          "name": "Include Out of Stock"
+        }
+      ]
+    },
+    {
+      "role": "link",
+      "name": "Leave feedback on Sponsored advertisement",
+      "keyshortcuts": "3187"
+    },
+    {
+      "role": "link",
+      "name": "Back to top",
+      "keyshortcuts": "3239"
+    },
+    {
+      "role": "heading",
+      "name": "Get to Know Us",
+      "keyshortcuts": "3245",
+      "level": 6
+    },
+    {
+      "role": "link",
+      "name": "About Us",
+      "keyshortcuts": "3248"
+    },
+    {
+      "role": "link",
+      "name": "Careers",
+      "keyshortcuts": "3250"
+    },
+    {
+      "role": "link",
+      "name": "Press Releases",
+      "keyshortcuts": "3252"
+    },
+    {
+      "role": "link",
+      "name": "Amazon Science",
+      "keyshortcuts": "3254"
+    },
+    {
+      "role": "heading",
+      "name": "Connect with Us",
+      "keyshortcuts": "3257",
+      "level": 6
+    },
+    {
+      "role": "link",
+      "name": "Facebook",
+      "keyshortcuts": "3260"
+    },
+    {
+      "role": "link",
+      "name": "Twitter",
+      "keyshortcuts": "3262"
+    },
+    {
+      "role": "link",
+      "name": "Instagram",
+      "keyshortcuts": "3264"
+    },
+    {
+      "role": "heading",
+      "name": "Make Money with Us",
+      "keyshortcuts": "3267",
+      "level": 6
+    },
+    {
+      "role": "link",
+      "name": "Sell on Amazon",
+      "keyshortcuts": "3270"
+    },
+    {
+      "role": "link",
+      "name": "Sell under Amazon Accelerator",
+      "keyshortcuts": "3272"
+    },
+    {
+      "role": "link",
+      "name": "Protect and Build Your Brand",
+      "keyshortcuts": "3274"
+    },
+    {
+      "role": "link",
+      "name": "Amazon Global Selling",
+      "keyshortcuts": "3276"
+    },
+    {
+      "role": "link",
+      "name": "Become an Affiliate",
+      "keyshortcuts": "3278"
+    },
+    {
+      "role": "link",
+      "name": "Fulfilment by Amazon",
+      "keyshortcuts": "3280"
+    },
+    {
+      "role": "link",
+      "name": "Advertise Your Products",
+      "keyshortcuts": "3282"
+    },
+    {
+      "role": "link",
+      "name": "Amazon Pay on Merchants",
+      "keyshortcuts": "3284"
+    },
+    {
+      "role": "heading",
+      "name": "Let Us Help You",
+      "keyshortcuts": "3287",
+      "level": 6
+    },
+    {
+      "role": "link",
+      "name": "COVID-19 and Amazon",
+      "keyshortcuts": "3290"
+    },
+    {
+      "role": "link",
+      "name": "Your Account",
+      "keyshortcuts": "3292"
+    },
+    {
+      "role": "link",
+      "name": "Returns Centre",
+      "keyshortcuts": "3294"
+    },
+    {
+      "role": "link",
+      "name": "Recalls and Product Safety Alerts",
+      "keyshortcuts": "3296"
+    },
+    {
+      "role": "link",
+      "name": "100% Purchase Protection",
+      "keyshortcuts": "3298"
+    },
+    {
+      "role": "link",
+      "name": "Amazon App Download",
+      "keyshortcuts": "3300"
+    },
+    {
+      "role": "link",
+      "name": "Help",
+      "keyshortcuts": "3302"
+    },
+    {
+      "role": "link",
+      "name": "Amazon India Home",
+      "keyshortcuts": "3307"
+    },
+    {
+      "role": "link",
+      "name": "Choose a language for shopping.",
+      "keyshortcuts": "3312"
+    },
+    {
+      "role": "link",
+      "name": "Choose a country/region for shopping.",
+      "keyshortcuts": "3317"
+    },
+    {
+      "role": "link",
+      "name": "AbeBooks Books, art & collectibles",
+      "keyshortcuts": "3325"
+    },
+    {
+      "role": "link",
+      "name": "Amazon Web Services Scalable Cloud Computing Services",
+      "keyshortcuts": "3331"
+    },
+    {
+      "role": "link",
+      "name": "Audible Download Audio Books",
+      "keyshortcuts": "3337"
+    },
+    {
+      "role": "link",
+      "name": "IMDb Movies, TV & Celebrities",
+      "keyshortcuts": "3343"
+    },
+    {
+      "role": "text",
+      "name": "\u00a0"
+    },
+    {
+      "role": "link",
+      "name": "Shopbop Designer Fashion Brands",
+      "keyshortcuts": "3351"
+    },
+    {
+      "role": "link",
+      "name": "Amazon Business Everything For Your Business",
+      "keyshortcuts": "3357"
+    },
+    {
+      "role": "link",
+      "name": "Prime Now 2-Hour Delivery on Everyday Items",
+      "keyshortcuts": "3363"
+    },
+    {
+      "role": "link",
+      "name": "Amazon Prime Music 100 million songs, ad-free Over 15 million podcast episodes",
+      "keyshortcuts": "3369"
+    },
+    {
+      "role": "link",
+      "name": "Conditions of Use & Sale",
+      "keyshortcuts": "3376"
+    },
+    {
+      "role": "link",
+      "name": "Privacy Notice",
+      "keyshortcuts": "3378"
+    },
+    {
+      "role": "link",
+      "name": "Interest-Based Ads",
+      "keyshortcuts": "3380"
+    },
+    {
+      "role": "text",
+      "name": "\u00a9 1996-2024, Amazon.com, Inc. or its affiliates"
+    }
+  ]
+}

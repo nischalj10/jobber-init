@@ -30,8 +30,9 @@ class BrowserNavAgent(BaseAgent):
     async def process_query(self, query: str) -> Dict[str, Any]:
         response = await super().process_query(query)
 
-        if "##SEND TO PLANNER##" in response["content"]:
-            message = response["content"].replace("##SEND TO PLANNER##", "").strip()
+        if "##TERMINATE TASK##" in response["content"]:
+            message = response["content"].replace("##TERMINATE TASK##", "").strip()
+            self.reset_messages()  # Call the method to reset messages
             return await self.planner_agent.receive_browser_message(message)
 
         return response

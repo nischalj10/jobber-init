@@ -93,3 +93,6 @@ class BaseAgent:
         except Exception as e:
             print(f"Error occurred: {e}")
             return {"terminate": True, "content": f"Error: {str(e)}"}
+
+    def reset_messages(self):
+        self.messages = [self.messages[0]]  # Keep the system message
