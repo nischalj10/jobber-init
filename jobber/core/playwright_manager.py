@@ -3,6 +3,7 @@ import tempfile
 import time
 from typing import List, Union
 
+from dotenv import load_dotenv
 from playwright.async_api import BrowserContext, Page, Playwright
 from playwright.async_api import async_playwright as playwright
 
@@ -14,6 +15,8 @@ from jobber.utils.logger import logger
 from jobber.utils.ui_messagetype import MessageType
 
 # TODO - Create a wrapper browser manager class that either starts a playwright manager (our solution) or a hosted browser manager like browserbase
+
+load_dotenv()
 
 
 class PlaywrightManager:
@@ -119,8 +122,9 @@ class PlaywrightManager:
             PlaywrightManager._playwright = None  # type: ignore
 
     async def create_browser_context(self):
-        user_data_dir: str = os.getenv("BROWSER_USER_DATA_DIR", "")
-        profile_directory: str = os.getenv("BROWSER_PROFILE", "")
+        user_data_dir: str = os.environ["BROWSER_USER_DATA_DIR"]
+        profile_directory: str = os.environ["BROWSER_PROFILE"]
+        print("Browser profile", user_data_dir)
         logger.info("Browser Profile - " + user_data_dir + profile_directory)
         try:
             PlaywrightManager._browser_context = (
