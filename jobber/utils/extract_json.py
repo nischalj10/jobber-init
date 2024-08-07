@@ -8,24 +8,24 @@ def extract_json(message: str) -> Dict[str, Any]:
     """
     Parse the response from the browser agent and return the response as a dictionary.
     """
-    # Parse the response content
     json_response = {}
-    # if message starts with ``` and ends with ``` then remove them
-    if message.startswith("```"):
-        message = message[3:]
-    if message.endswith("```"):
-        message = message[:-3]
-    if message.startswith("json"):
-        message = message[4:]
-
+    # Remove Markdown code block delimiters if present
     message = message.strip()
+    if message.startswith("```"):
+        message = message.split("\n", 1)[1]  # Remove the first line
+    if message.endswith("```"):
+        message = message.rsplit("\n", 1)[0]  # Remove the last line
+
+    # Remove any leading "json" tag
+    if message.lstrip().startswith("json"):
+        message = message.lstrip()[4:].lstrip()
+
     try:
-        json_response: dict[str, Any] = json.loads(message)
-    except Exception as e:
-        # If the response is not a valid JSON, try pass it using string matching.
-        # This should seldom be triggered
+        return json.loads(message)
+    except json.JSONDecodeError as e:
         logger.warn(
-            f'LLM response was not properly formed JSON. Will try to use it as is. LLM response: "{message}". Error: {e}'
+            f"LLM response was not properly formed JSON. Error: {e}. "
+            f'LLM response: "{message}"'
         )
         message = message.replace("\\n", "\n")
         message = message.replace("\n", " ")  # type: ignore
