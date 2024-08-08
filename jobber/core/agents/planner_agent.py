@@ -8,14 +8,12 @@ from jobber.core.prompts import LLM_PROMPTS
 
 class PlannerAgent(BaseAgent):
     def __init__(self):
-        user_ltm = self.__get_ltm()
+        ltm = self.__get_ltm()
         system_prompt: str = LLM_PROMPTS["PLANNER_AGENT_PROMPT"]
 
-        # Add useer ltm to system prompt 
-        user_ltm = "\n" + user_ltm
-        system_prompt = Template(system_prompt).substitute(
-            basic_user_information = user_ltm
-        )
+        # Add useer ltm to system prompt
+        ltm = "\n" + ltm
+        system_prompt = Template(system_prompt).substitute(basic_user_information=ltm)
 
         super().__init__(system_prompt=system_prompt)
         self.browser_agent = BrowserNavAgent(self)
@@ -49,5 +47,5 @@ class PlannerAgent(BaseAgent):
             [{"role": "user", "content": message}], self.browser_agent
         )
 
-    async def __get_ltm():
+    def __get_ltm(self):
         return ltm.get_user_ltm()

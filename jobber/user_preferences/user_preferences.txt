@@ -1,7 +1,10 @@
 Personal Info:
-First Name: John
-Last Name: Doe
+First Name: Naman
+Last Name: Jain
 Date of birth: 10/10/2010
+Pronouns: He/Him
+Email: naman@gmail.com
+Expeted Salary: 200000
 Occupation: Software Engineer
 Address: 49 Featherstone Street, LONDON, EC1Y 8SY, UNITED KINGDOM
 Email: naman@gmail.com
@@ -10,3 +13,4 @@ Here are some of my preferences:
 Shopping Preferences: www.amazon.com
 Favorite news source: www.thehindu.com
 Favorite flight booking site to use with every flight related query: https://www.google.com/travel/flightsno
+Job Apply Website = https://docs.google.com/forms/d/e/1FAIpQLSdYNEzqmyFa7vpLx9zVUiwp4JiBAKiHY7YuL3FN91DRufdeUQ/viewform

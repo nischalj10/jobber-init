@@ -13,14 +13,12 @@ from jobber.core.skills.pdf_text_extractor import extract_text_from_pdf
 
 class BrowserNavAgent(BaseAgent):
     def __init__(self, planner_agent):
-        user_ltm = self.__get_user_ltm()
+        ltm = self.__get_ltm()
         system_prompt = LLM_PROMPTS["BROWSER_AGENT_PROMPT"]
 
         # Add user ltm to system prompt
-        user_ltm = "\n" + user_ltm
-        system_prompt = Template(system_prompt).substitute(
-            basic_user_information=user_ltm
-        )
+        ltm = "\n" + ltm
+        system_prompt = Template(system_prompt).substitute(basic_user_information=ltm)
 
         super().__init__(
             system_prompt=system_prompt,
@@ -48,5 +46,5 @@ class BrowserNavAgent(BaseAgent):
 
         return response
 
-    async def __get_user_ltm():
+    def __get_ltm(self):
         return ltm.get_user_ltm()
