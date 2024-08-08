@@ -12,7 +12,7 @@ from jobber.core.skills.pdf_text_extractor import extract_text_from_pdf
 
 
 class BrowserNavAgent(BaseAgent):
-    def __init__(self, planner_agent):
+    def __init__(self, planner_agent: BaseAgent):
         ltm = self.__get_ltm()
         system_prompt = LLM_PROMPTS["BROWSER_AGENT_PROMPT"]
 
@@ -40,9 +40,12 @@ class BrowserNavAgent(BaseAgent):
         response = await super().process_query(query)
 
         if "##TERMINATE TASK##" in response["content"]:
-            message = response["content"].replace("##TERMINATE TASK##", "").strip()
+            print("terminating navigator - task accoplished")
+            message_for_planner = (
+                response["content"].replace("##TERMINATE TASK##", "").strip()
+            )
             self.reset_messages()  # Call the method to reset messages
-            return await self.planner_agent.receive_browser_message(message)
+            return await self.planner_agent.receive_browser_message(message_for_planner)
 
         return response
 

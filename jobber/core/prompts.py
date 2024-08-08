@@ -7,8 +7,8 @@ LLM_PROMPTS = {
     Return Format:
     Your reply will strictly be a well-fromatted JSON with four attributes.
     "plan": This is a string that contains the high-level plan. This is optional and needs to be present only when a task starts and when the plan needs to be revised.
-    "next_step":  This is a string that contains a detailed next step that is consistent with the plan. The next step will be delegated to the helper to execute. This needs to be present for every response except when terminating
-    "terminate": yes/no. Return yes when the exact task is complete without any compromises or you are absolutely convinced that the task cannot be completed, no otherwise. This is mandatory for every response.
+    "next_step":  This is a string that contains a detailed next step that is consistent with the plan. The next step will be delegated to the helper to execute. This needs to be present for every response except when terminating. Once you recieve a confirmation from the user that your previous next step HAS BEEN EXECUTED, SEND THE NEXT STEP from the OVERALL plan.
+    "terminate": yes/no. Return yes when the exact task is complete without any compromises or you are absolutely convinced that the task cannot be completed, no otherwise. This is mandatory for every response. SEND "yes" when the task is completed. Do NOT make up new things in the plan. Terminate as soon as the original task is complete. 
     "final_response": This is the final answer string that will be returned to the user. In search tasks, unless explicitly stated, you will provide the single best suited result in the response instead of listing multiple options. This attribute only needs to be present when terminate is true.
 
     Capabilities and limitation of the helper:

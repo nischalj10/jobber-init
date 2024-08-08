@@ -75,27 +75,27 @@ class BaseAgent:
                     )
                 continue
 
+            print("uiewbeiu")
+
             content = response_message.content
             if "##TERMINATE TASK##" in content:
                 return {
                     "terminate": True,
-                    "content": content.replace("##TERMINATE TASK##", "").strip(),
+                    "content": content,
                 }
             else:
                 extracted_response = extract_json(content)
-                if extracted_response.get("terminate"):
+                print("lovely", extracted_response)
+                if extracted_response.get("terminate") == "yes":
                     return {
                         "terminate": True,
                         "content": extracted_response.get("final_response"),
                     }
-                elif extracted_response.get("next_step"):
+                else:
                     return {
                         "terminate": False,
                         "content": extracted_response.get("next_step"),
                     }
-                else:
-                    self.messages.append(response_message)
-                    return {"terminate": False, "content": content}
 
     def send(self, message: str, recipient):
         return recipient.receive(message, self)
