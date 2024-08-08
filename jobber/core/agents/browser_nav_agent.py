@@ -1,6 +1,8 @@
+from string import Template
 from typing import Any, Dict
 
 from jobber.core.agents.base import BaseAgent
+from jobber.core.memory import ltm
 from jobber.core.prompts import LLM_PROMPTS
 from jobber.core.skills.enter_text_using_selector import bulk_enter_text, entertext
 from jobber.core.skills.get_dom_with_content_type import get_dom_with_content_type
@@ -11,8 +13,17 @@ from jobber.core.skills.pdf_text_extractor import extract_text_from_pdf
 
 class BrowserNavAgent(BaseAgent):
     def __init__(self, planner_agent):
+        user_ltm = self.__get_user_ltm()
+        system_prompt = LLM_PROMPTS["BROWSER_AGENT_PROMPT"]
+
+        # Add user ltm to system prompt
+        user_ltm = "\n" + user_ltm
+        system_prompt = Template(system_prompt).substitute(
+            basic_user_information=user_ltm
+        )
+
         super().__init__(
-            system_prompt=LLM_PROMPTS["BROWSER_AGENT_PROMPT"],
+            system_prompt=system_prompt,
             tools=[
                 (bulk_enter_text, LLM_PROMPTS["BULK_ENTER_TEXT_PROMPT"]),
                 (entertext, LLM_PROMPTS["ENTER_TEXT_PROMPT"]),
@@ -36,3 +47,6 @@ class BrowserNavAgent(BaseAgent):
             return await self.planner_agent.receive_browser_message(message)
 
         return response
+
+    async def __get_user_ltm():
+        return ltm.get_user_ltm()
