@@ -8,8 +8,6 @@ from dotenv import load_dotenv
 from jobber.utils.extract_json import extract_json
 from jobber.utils.function_utils import get_function_schema
 
-load_dotenv()
-
 
 class BaseAgent:
     def __init__(
@@ -17,6 +15,7 @@ class BaseAgent:
         system_prompt: str = "You are a helpful assistant",
         tools: Optional[List[Tuple[Callable, str]]] = None,
     ):
+        self.name = self.__class__.__name__
         self.messages = [{"role": "system", "content": system_prompt}]
         self.tools_list = []
         self.executable_functions_list = {}
@@ -38,7 +37,16 @@ class BaseAgent:
         self.messages.extend(messages)
 
         while True:
-            response = litellm.completion(messages=self.messages, **self.llm_config)
+            load_dotenv()
+            litellm.json_logs = True
+            litellm.success_callback = ["langsmith"]
+            response = litellm.completion(
+                messages=self.messages,
+                **self.llm_config,
+                metadata={
+                    "run_name": f"{self.name}Run",
+                },
+            )
 
             response_message = response.choices[0].message
             print("response", response_message)
@@ -62,28 +70,28 @@ class BaseAgent:
                 continue
 
             content = response_message.content
-            extracted_response = extract_json(content)
-
-            if extracted_response.get("terminate") == "yes":
+            if "##TERMINATE TASK##" in content:
                 return {
                     "terminate": True,
-                    "content": extracted_response.get("final_response", content),
-                }
-            elif extracted_response.get("next_step"):
-                return {
-                    "terminate": False,
-                    "content": extracted_response.get("next_step"),
+                    "content": content.replace("##TERMINATE TASK##", "").strip(),
                 }
             else:
-                self.messages.append(response_message)
-                return {"terminate": False, "content": content}
+                extracted_response = extract_json(content)
+                if extracted_response.get("next_step"):
+                    return {
+                        "terminate": False,
+                        "content": extracted_response.get("next_step"),
+                    }
+                else:
+                    self.messages.append(response_message)
+                    return {"terminate": False, "content": content}
 
     def send(self, message: str, recipient):
         return recipient.receive(message, self)
 
     async def receive(self, message: str, sender):
         reply = await self.generate_reply(
-            [{"role": "user", "content": message}], sender
+            [{"role": "assistant", "content": message}], sender
         )
         return self.send(reply["content"], sender)
 
