@@ -13,4 +13,4 @@ Here are some of my preferences:
 Shopping Preferences: www.amazon.com
 Favorite news source: www.thehindu.com
 Favorite flight booking site to use with every flight related query: https://www.google.com/travel/flightsno
-Job Apply Website = https://docs.google.com/forms/d/e/1FAIpQLSdYNEzqmyFa7vpLx9zVUiwp4JiBAKiHY7YuL3FN91DRufdeUQ/viewform
+Job Apply Website = https://jobs.lever.co/leverdemo-8/45d39614-464a-4b62-a5cd-8683ce4fb80a/apply
