@@ -3,6 +3,7 @@ import os
 from typing import Any, Callable, Dict, List, Optional, Tuple
 
 import litellm
+import openai
 from dotenv import load_dotenv
 
 from jobber.utils.extract_json import extract_json
@@ -40,13 +41,18 @@ class BaseAgent:
             load_dotenv()
             litellm.json_logs = True
             litellm.success_callback = ["langsmith"]
-            response = litellm.completion(
-                messages=self.messages,
-                **self.llm_config,
-                metadata={
-                    "run_name": f"{self.name}Run",
-                },
-            )
+
+            try:
+                response = litellm.completion(
+                    messages=self.messages,
+                    **self.llm_config,
+                    metadata={
+                        "run_name": f"{self.name}Run",
+                    },
+                )
+            except openai.BadRequestError as e:
+                should_retry = litellm._should_retry(e.status_code)
+                print(f"should_retry: {should_retry}")
 
             response_message = response.choices[0].message
             print("response", response_message)
@@ -77,7 +83,12 @@ class BaseAgent:
                 }
             else:
                 extracted_response = extract_json(content)
-                if extracted_response.get("next_step"):
+                if extracted_response.get("terminate"):
+                    return {
+                        "terminate": True,
+                        "content": extracted_response.get("final_response"),
+                    }
+                elif extracted_response.get("next_step"):
                     return {
                         "terminate": False,
                         "content": extracted_response.get("next_step"),

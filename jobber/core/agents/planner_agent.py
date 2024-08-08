@@ -34,7 +34,7 @@ class PlannerAgent(BaseAgent):
             else:
                 self.messages.append(
                     {
-                        "role": "user",
+                        "role": "assistant",
                         "content": f"Browser agent response: {browser_response['content']}",
                     }
                 )

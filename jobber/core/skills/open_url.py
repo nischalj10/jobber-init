@@ -1,9 +1,9 @@
 import inspect
+
 from typing_extensions import Annotated
 
 from jobber.core.playwright_manager import PlaywrightManager
 from jobber.utils.logger import logger
-from jobber.utils.ui_messagetype import MessageType
 
 
 async def openurl(
@@ -11,7 +11,7 @@ async def openurl(
         str,
         "The URL to navigate to. Value must include the protocol (http:// or https://).",
     ],
-    timeout: Annotated[int, "Additional wait time in seconds after initial load."] = 3,
+    timeout: Annotated[int, "Additional wait time in seconds after initial load."] = 10,
 ) -> Annotated[str, "Returns the result of this request in text form"]:
     """
     Opens a specified URL in the active browser instance. Waits for an initial load event, then waits for either
