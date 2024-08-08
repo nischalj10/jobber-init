@@ -78,6 +78,7 @@ LLM_PROMPTS = {
    Important: If you encounter an issues or is unsure how to proceed, simply ##TERMINATE TASK## and provide a detailed summary of the exact issue encountered.
    Do not repeat the same action multiple times if it fails. Instead, if something did not work after a few attempts, terminate the task.
    DO NOT forget to confirm completion with ##TERMINATE TASK## in your answer alonsgisde a SHORT SUMMARY.
+   NEVER ASK WHAT TO DO NEXT to the user.
    ALAWAYS confirm completion of task with  ##TERMINATE TASK##
    """,
     "VERFICATION_AGENT": """Given a conversation and a task, your task is to analyse the conversation and tell if the task is completed. If not, you need to tell what is not completed and suggest next steps to complete the task.""",

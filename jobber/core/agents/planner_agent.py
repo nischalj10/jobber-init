@@ -38,7 +38,7 @@ class PlannerAgent(BaseAgent):
     async def receive_browser_message(self, message: str):
         print("recieved browser message")
         processed_helper_response = await self.generate_reply(
-            [{"role": "assistant", "content": f"Helper response: {message}"}],
+            [{"role": "user", "content": f"Helper response: {message}"}],
             self.browser_agent,
         )
 
