@@ -9,6 +9,7 @@ from jobber.core.skills.get_dom_with_content_type import get_dom_with_content_ty
 from jobber.core.skills.get_url import geturl
 from jobber.core.skills.open_url import openurl
 from jobber.core.skills.pdf_text_extractor import extract_text_from_pdf
+from jobber.core.skills.upload_file import upload_file
 
 
 class BrowserNavAgent(BaseAgent):
@@ -32,6 +33,7 @@ class BrowserNavAgent(BaseAgent):
                 (geturl, LLM_PROMPTS["GET_URL_PROMPT"]),
                 (openurl, LLM_PROMPTS["OPEN_URL_PROMPT"]),
                 (extract_text_from_pdf, LLM_PROMPTS["EXTRACT_TEXT_FROM_PDF_PROMPT"]),
+                (upload_file, LLM_PROMPTS["UPLOAD_FILE_PROMPT"]),
             ],
         )
         self.planner_agent = planner_agent

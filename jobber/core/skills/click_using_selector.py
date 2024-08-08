@@ -13,7 +13,6 @@ from jobber.utils.dom_mutation_observer import (
     unsubscribe,  # type: ignore
 )
 from jobber.utils.logger import logger
-from jobber.utils.ui_messagetype import MessageType
 
 
 async def click(

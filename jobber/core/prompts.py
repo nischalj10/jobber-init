@@ -78,7 +78,7 @@ LLM_PROMPTS = {
    Important: If you encounter an issues or is unsure how to proceed, simply ##TERMINATE TASK## and provide a detailed summary of the exact issue encountered.
    Do not repeat the same action multiple times if it fails. Instead, if something did not work after a few attempts, terminate the task.
    DO NOT forget to confirm completion with ##TERMINATE TASK## in your answer alonsgisde a SHORT SUMMARY.
-   NEVER ASK WHAT TO DO NEXT to the user.
+   NEVER ASK WHAT TO DO NEXT  or HOW would they like to proceed to the user. 
    ALAWAYS confirm completion of task with  ##TERMINATE TASK##
    """,
     "VERFICATION_AGENT": """Given a conversation and a task, your task is to analyse the conversation and tell if the task is completed. If not, you need to tell what is not completed and suggest next steps to complete the task.""",
@@ -87,6 +87,7 @@ LLM_PROMPTS = {
    Successfully completes when both actions are executed without errors, returning True; otherwise, it provides False or an explanatory message of any failure encountered.
    Always prefer this dual-action skill for tasks that combine text input and element clicking to leverage its streamlined operation.""",
     "OPEN_URL_PROMPT": """Opens a specified URL in the web browser instance. Returns url of the new page if successful or appropriate error message if the page could not be opened.""",
+    "UPLOAD_FILE_PROMPT": """This skill uploads a file on the page opened by the web browser instance""",
     "GO_BACK_PROMPT": """Goes back to previous page in the browser history. Useful when correcting an incorrect action that led to a new page or when needing to revisit a previous page for information. Returns the full URL of the page after the back action is performed.""",
     "COMMAND_EXECUTION_PROMPT": """Execute the user task "$command" $current_url_prompt_segment""",
     "GET_USER_INPUT_PROMPT": """Get clarification by asking the user or wait for user to perform an action on webpage. This is useful e.g. when you encounter a login or captcha and requires the user to intervene. This skill will also be useful when task is ambigious and you need more clarification from the user (e.g. ["which source website to use to accomplish a task"], ["Enter your credentials on your webpage and type done to continue"]). Use this skill very sparingly and only when absolutely needed.""",
