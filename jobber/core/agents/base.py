@@ -78,7 +78,7 @@ class BaseAgent:
             print("uiewbeiu")
 
             content = response_message.content
-            if "##TERMINATE TASK##" in content:
+            if "##TERMINATE TASK##" in content or "## TERMINATE TASK ##" in content:
                 return {
                     "terminate": True,
                     "content": content,
@@ -87,11 +87,13 @@ class BaseAgent:
                 extracted_response = extract_json(content)
                 print("lovely", extracted_response)
                 if extracted_response.get("terminate") == "yes":
+                    print("should terminate now")
                     return {
                         "terminate": True,
                         "content": extracted_response.get("final_response"),
                     }
                 else:
+                    print("retunring next step")
                     return {
                         "terminate": False,
                         "content": extracted_response.get("next_step"),

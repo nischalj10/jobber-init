@@ -26,30 +26,31 @@ class PlannerAgent(BaseAgent):
         while not response["terminate"]:
             print("y89379038729872398")
 
-            browser_response = await self.browser_agent.process_query(
-                response["content"]
-            )
+            # the browser navigator has ##TERMINATE TASK## in its response, it will self termiate and call the receive_browser_message function defined below
+            await self.browser_agent.process_query(response["content"])
 
-            # if the browser agent does not terminate i.e it is not able to finish the task in one go - it will send its observation back to planner. we are handling that in the below code.
-            # if it terminates, i.e the browser navigator has ##TERMINATE TASK## in its response, it will self termiate and call the receive_browser_message function defined below
-            print("ygduyebhj")
-            self.messages.append(
-                {
-                    "role": "assistant",
-                    "content": f"Helper response: {browser_response['content']}",
-                }
-            )
-            response = await self.generate_reply([], None)
+            response = await self.receive_browser_message(response["content"])
 
         # processing of the entire task done
         self.reset_messages()
         return response["content"]
 
     async def receive_browser_message(self, message: str):
-        return await self.generate_reply(
+        print("recieved browser message")
+        processed_helper_response = await self.generate_reply(
             [{"role": "assistant", "content": f"Helper response: {message}"}],
             self.browser_agent,
         )
+
+        print("$$$87286748726487", processed_helper_response)
+
+        # Check for termination immediately after processing the helper response
+        if processed_helper_response.get("terminate"):
+            print("returing", processed_helper_response["content"])
+            return processed_helper_response["content"]
+        else:
+            print("uhu823842390489032")
+            await self.browser_agent.process_query(processed_helper_response["content"])
 
     def __get_ltm(self):
         return ltm.get_user_ltm()
