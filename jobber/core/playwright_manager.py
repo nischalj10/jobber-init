@@ -6,7 +6,6 @@ from typing import List, Union
 from dotenv import load_dotenv
 from playwright.async_api import BrowserContext, Page, Playwright
 from playwright.async_api import async_playwright as playwright
-from playwright_stealth import stealth_async
 
 from jobber.utils.dom_mutation_observer import (
     dom_mutation_change_detected,
@@ -176,12 +175,12 @@ class PlaywrightManager:
             # Additional step to modify the navigator.webdriver property
             pages = PlaywrightManager._browser_context.pages
             for page in pages:
-                await stealth_async(page)  # Apply stealth to each page
-                # await page.add_init_script("""
-                #     Object.defineProperty(navigator, 'webdriver', {
-                #         get: () => undefined
-                #     })
-                # """)
+                # await stealth_async(page)  # Apply stealth to each page
+                await page.add_init_script("""
+                    Object.defineProperty(navigator, 'webdriver', {
+                        get: () => undefined
+                    })
+                """)
 
         except Exception as e:
             if "Target page, context or browser has been closed" in str(e):
@@ -201,8 +200,8 @@ class PlaywrightManager:
                     no_viewport=True,
                 )
                 # # Apply stealth to the new context
-                for page in PlaywrightManager._browser_context.pages:
-                    await stealth_async(page)
+                # for page in PlaywrightManager._browser_context.pages:
+                #     await stealth_async(page)
             elif "Chromium distribution 'chrome' is not found " in str(e):
                 raise ValueError(
                     "Chrome is not installed on this device. Install Google Chrome or install playwright using 'playwright install chrome'. Refer to the readme for more information."
@@ -248,7 +247,7 @@ class PlaywrightManager:
                 return page
             else:
                 page: Page = await browser.new_page()  # type: ignore
-                await stealth_async(page)  # Apply stealth to the new page
+                # await stealth_async(page)  # Apply stealth to the new page
                 return page
         except Exception:
             logger.warn("Browser context was closed. Creating a new one.")

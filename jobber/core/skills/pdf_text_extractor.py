@@ -1,13 +1,12 @@
 import os
-from typing_extensions import Annotated
 
 import httpx
 import pdfplumber
+from typing_extensions import Annotated
 
 from jobber.config import PROJECT_TEMP_PATH
 from jobber.core.playwright_manager import PlaywrightManager
 from jobber.utils.logger import logger
-from jobber.utils.ui_messagetype import MessageType
 
 
 async def extract_text_from_pdf(
