@@ -7,6 +7,7 @@ from typing_extensions import Annotated
 from jobber.config import PROJECT_TEMP_PATH
 from jobber.core.playwright_manager import PlaywrightManager
 from jobber.utils.logger import logger
+from jobber.utils.message_type import MessageType
 
 
 async def extract_text_from_pdf(
@@ -39,10 +40,10 @@ async def extract_text_from_pdf(
                     text += page_text + "\n"
         extracted_text = text.strip()
         word_count = len(extracted_text.split())
-        # await browser_manager.notify_user(
-        #     f"Extracted text from the PDF successfully. Found {word_count} words.",
-        #     message_type=MessageType.ACTION,
-        # )
+        await browser_manager.notify_user(
+            f"Extracted text from the PDF successfully. Found {word_count} words.",
+            message_type=MessageType.ACTION,
+        )
         return "Text found in the PDF:\n" + extracted_text
     except httpx.HTTPStatusError as e:
         logger.error(
