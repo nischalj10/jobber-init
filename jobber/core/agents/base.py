@@ -1,5 +1,4 @@
 import json
-import os
 from typing import Any, Callable, Dict, List, Optional, Tuple
 
 import litellm
@@ -16,14 +15,16 @@ class BaseAgent:
         system_prompt: str = "You are a helpful assistant",
         tools: Optional[List[Tuple[Callable, str]]] = None,
     ):
+        load_dotenv()
         self.name = self.__class__.__name__
         self.messages = [{"role": "system", "content": system_prompt}]
         self.tools_list = []
         self.executable_functions_list = {}
-        self.llm_config = {"model": os.environ["MODEL_NAME"]}
+        self.llm_config = {"model": "anthropic.claude-3-5-sonnet-20240620-v1:0"}
         if tools:
             self._initialize_tools(tools)
             self.llm_config.update({"tools": self.tools_list, "tool_choice": "auto"})
+        print("model", self.llm_config)
 
     def _initialize_tools(self, tools: List[Tuple[Callable, str]]):
         for function, description in tools:
@@ -38,8 +39,7 @@ class BaseAgent:
         self.messages.extend(messages)
 
         while True:
-            load_dotenv()
-            litellm.json_logs = True
+            litellm.logging = False
             litellm.success_callback = ["langsmith"]
 
             try:

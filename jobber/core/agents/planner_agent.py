@@ -29,6 +29,8 @@ class PlannerAgent(BaseAgent):
             # the browser navigator has ##TERMINATE TASK## in its response, it will self termiate and call the receive_browser_message function defined below
             await self.browser_agent.process_query(response["content"])
 
+            print("jai shree ram")
+
             response = await self.receive_browser_message(response["content"])
 
         # processing of the entire task done

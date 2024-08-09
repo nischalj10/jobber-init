@@ -80,6 +80,7 @@ LLM_PROMPTS = {
    DO NOT forget to confirm completion with ##TERMINATE TASK## in your answer alonsgisde a SHORT SUMMARY.
    NEVER ASK WHAT TO DO NEXT  or HOW would they like to proceed to the user. 
    ALAWAYS confirm completion of task with  ##TERMINATE TASK##
+   VERY VERY IMPORTANT - Until and unless you are calling a tool - always have ##TERMINATE TASK## in your response.
    """,
     "VERFICATION_AGENT": """Given a conversation and a task, your task is to analyse the conversation and tell if the task is completed. If not, you need to tell what is not completed and suggest next steps to complete the task.""",
     "ENTER_TEXT_AND_CLICK_PROMPT": """This skill enters text into a specified element and clicks another element, both identified by their DOM selector queries.
