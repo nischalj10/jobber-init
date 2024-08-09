@@ -8,7 +8,7 @@ async def upload_file(
     # label: Annotated[str, "Label for the element on which upload should happen"],
     selector: Annotated[
         str,
-        "The properly formed query selector string to identify the file input element (e.g. [mmid='114']). When \"mmid\" attribute is present, use it for the query selector.",
+        "The properly formed query selector string to identify the file input #element (e.g. [mmid='114']). When \"mmid\" attribute is present, use it for #the query selector.",
     ],
     file_path: Annotated[str, "Path on the local system for the file to be uploaded"],
 ) -> Annotated[str, "A meesage indicating if the file uplaod was successful"]:
@@ -25,8 +25,8 @@ async def upload_file(
         f"Uploading file onto the page from {file_path} using selector {selector}"
     )
     print("naman-selector")
-    print(selector)
-
+    # print(label)
+    # label = "Add File"
     browser_manager = PlaywrightManager(browser_type="chromium", headless=False)
     page = await browser_manager.get_current_page()
 
@@ -36,6 +36,7 @@ async def upload_file(
     await page.wait_for_load_state("domcontentloaded")
 
     try:
+        await page.locator(selector).set_input_files(file_path)
         # await page.get_by_label(label).set_input_files(file_path)
         logger.info("File upload was successful")
     except Exception as e:
