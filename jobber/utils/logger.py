@@ -1,12 +1,25 @@
 import logging
+import os
 from typing import Union
 
+# Create a logs directory if it doesn't exist
+log_directory = "logs"
+os.makedirs(log_directory, exist_ok=True)
+
+# Configure the root logger
+logging.basicConfig(
+    level=logging.DEBUG,
+    format="[%(asctime)s] %(levelname)s {%(filename)s:%(lineno)d} - %(message)s",
+    handlers=[
+        logging.FileHandler(os.path.join(log_directory, "app.log")),
+    ],
+    force=True,
+)
+
+# Disable output to console
+logging.getLogger().removeHandler(logging.getLogger().handlers[0])
+
 logger = logging.getLogger(__name__)
-"""logging.basicConfig(
-    level=logging.DEBUG, # change level here or use set_log_level() to change it
-    format="[%(asctime)s] %(levelname)s {%(filename)s:%(lineno)d}  - %(message)s", filename='app.log', filemode='a'
-)"""
-logging.basicConfig(level=logging.INFO)
 
 # logging.getLogger("httpcore").setLevel(logging.WARNING)
 # logging.getLogger("httpx").setLevel(logging.WARNING)

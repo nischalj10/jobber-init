@@ -14,7 +14,7 @@ from jobber.utils.ui_messagetype import MessageType
 async def enter_text_and_click(
     text_selector: Annotated[
         str,
-        "The properly formatted DOM selector query, for example [mmid='1234'], where the text will be entered. Use mmid attribute.",
+        "The properly formatted DOM selector query, for example [mmid='1234'], where the text will be entered. Use mmid attribute. mmid will always be a number",
     ],
     text_to_enter: Annotated[
         str,
@@ -22,7 +22,7 @@ async def enter_text_and_click(
     ],
     click_selector: Annotated[
         str,
-        "The properly formatted DOM selector query, for example [mmid='1234'], for the element that will be clicked after text entry.",
+        "The properly formatted DOM selector query, for example [mmid='1234'], for the element that will be clicked after text entry. mmid will always be a number",
     ],
     wait_before_click_execution: Annotated[
         float, "Optional wait time in seconds before executing the click.", float

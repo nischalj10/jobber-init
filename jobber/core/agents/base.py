@@ -5,8 +5,10 @@ import litellm
 import openai
 from dotenv import load_dotenv
 
+from jobber.core.skills.get_screenshot import get_screenshot
 from jobber.utils.extract_json import extract_json
 from jobber.utils.function_utils import get_function_schema
+from jobber.utils.logger import logger
 
 
 class BaseAgent:
@@ -20,7 +22,7 @@ class BaseAgent:
         self.messages = [{"role": "system", "content": system_prompt}]
         self.tools_list = []
         self.executable_functions_list = {}
-        self.llm_config = {"model": "anthropic.claude-3-5-sonnet-20240620-v1:0"}
+        self.llm_config = {"model": "gpt-4o-mini"}
         if tools:
             self._initialize_tools(tools)
             self.llm_config.update({"tools": self.tools_list, "tool_choice": "auto"})
@@ -37,11 +39,13 @@ class BaseAgent:
         self, messages: List[Dict[str, Any]], sender
     ) -> Dict[str, Any]:
         self.messages.extend(messages)
+        processed_messages = self._process_messages(self.messages)
+        self.messages = processed_messages
+        logger.info("processed messages", processed_messages)
 
         while True:
             litellm.logging = False
             litellm.success_callback = ["langsmith"]
-
             try:
                 response = litellm.completion(
                     messages=self.messages,
@@ -64,15 +68,28 @@ class BaseAgent:
                     function_name = tool_call.function.name
                     function_to_call = self.executable_functions_list[function_name]
                     function_args = json.loads(tool_call.function.arguments)
-                    function_response = await function_to_call(**function_args)
-                    self.messages.append(
-                        {
-                            "tool_call_id": tool_call.id,
-                            "role": "tool",
-                            "name": function_name,
-                            "content": str(function_response),
-                        }
-                    )
+                    try:
+                        function_response = await function_to_call(**function_args)
+                        self.messages.append(
+                            {
+                                "tool_call_id": tool_call.id,
+                                "role": "tool",
+                                "name": function_name,
+                                "content": str(function_response),
+                            }
+                        )
+                    except:
+                        self.messages.append(
+                            {
+                                "tool_call_id": tool_call.id,
+                                "role": "tool",
+                                "name": function_name,
+                                "content": str(
+                                    "The tool responded with an error, please try again with a diffrent tool or modify the parameters of the tool",
+                                    function_response,
+                                ),
+                            }
+                        )
                 continue
 
             print("uiewbeiu")
@@ -81,22 +98,31 @@ class BaseAgent:
             if "##TERMINATE TASK##" in content or "## TERMINATE TASK ##" in content:
                 return {
                     "terminate": True,
-                    "content": content,
+                    "content": content.replace("##TERMINATE TASK##", "").strip(),
                 }
             else:
-                extracted_response = extract_json(content)
-                print("lovely", extracted_response)
-                if extracted_response.get("terminate") == "yes":
-                    print("should terminate now")
+                try:
+                    extracted_response = extract_json(content)
+                    print("lovely", extracted_response)
+                    if extracted_response.get("terminate") == "yes":
+                        print("should terminate now")
+                        return {
+                            "terminate": True,
+                            "content": extracted_response.get("final_response"),
+                        }
+                    else:
+                        print("retunring next step")
+                        return {
+                            "terminate": False,
+                            "content": extracted_response.get("next_step"),
+                        }
+                # handling the case when browser nav does not send ##TERMINATE TASK## in its response. We will get an error in extract_json function which we are catching here
+                # we still return terminate true and send the message as is to the planner
+                except:
+                    print("navigator did not send ##Terminate task##", content)
                     return {
                         "terminate": True,
-                        "content": extracted_response.get("final_response"),
-                    }
-                else:
-                    print("retunring next step")
-                    return {
-                        "terminate": False,
-                        "content": extracted_response.get("next_step"),
+                        "content": content,
                     }
 
     def send(self, message: str, recipient):
@@ -109,11 +135,76 @@ class BaseAgent:
         return self.send(reply["content"], sender)
 
     async def process_query(self, query: str) -> Dict[str, Any]:
+        print("processing&&&&&&&&&&&&&&&&&&&")
         try:
-            return await self.generate_reply([{"role": "user", "content": query}], None)
+            screenshot = await get_screenshot()
+            return await self.generate_reply(
+                [
+                    {
+                        "role": "user",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": f"{query} \nHere is a screenshot of the current browser page",
+                            },
+                            {
+                                "type": "image_url",
+                                "image_url": {"url": f"{screenshot}"},
+                            },
+                        ],
+                    }
+                ],
+                None,
+            )
         except Exception as e:
             print(f"Error occurred: {e}")
             return {"terminate": True, "content": f"Error: {str(e)}"}
 
     def reset_messages(self):
         self.messages = [self.messages[0]]  # Keep the system message
+
+    def _process_messages(self, messages: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        processed_messages = []
+
+        # find the latest user message in the messages array
+        last_user_message_index = next(
+            (
+                i
+                for i in reversed(range(len(messages)))
+                if messages[i]["role"] == "user"
+            ),
+            -1,
+        )
+
+        # remove image and the supporting text of "Here is a screenshot of the current browser page" from previous messages
+        for i, message in enumerate(messages):
+            if message["role"] == "user":
+                if isinstance(message.get("content"), list):
+                    new_content = []
+                    for item in message["content"]:
+                        if item["type"] == "text":
+                            if i != last_user_message_index:
+                                # Remove the screenshot text if it's not the last user message
+                                item["text"] = (
+                                    item["text"]
+                                    .replace(
+                                        "Here is a screenshot of the current browser page",
+                                        "",
+                                    )
+                                    .strip()
+                                )
+                            new_content.append(item)
+                        elif (
+                            item["type"] == "image_url" and i == last_user_message_index
+                        ):
+                            new_content.append(item)
+                    message["content"] = new_content
+            processed_messages.append(message)
+
+        # Ensure the system message is always included
+        if processed_messages and processed_messages[0]["role"] != "system":
+            system_message = next((m for m in messages if m["role"] == "system"), None)
+            if system_message:
+                processed_messages.insert(0, system_message)
+
+        return processed_messages

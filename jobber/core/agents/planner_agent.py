@@ -1,19 +1,18 @@
-from string import Template
-
 from jobber.core.agents.base import BaseAgent
 from jobber.core.agents.browser_nav_agent import BrowserNavAgent
 from jobber.core.memory import ltm
 from jobber.core.prompts import LLM_PROMPTS
+from jobber.core.skills.get_screenshot import get_screenshot
 
 
 class PlannerAgent(BaseAgent):
     def __init__(self):
-        ltm = self.__get_ltm()
+        # ltm = self.__get_ltm()
         system_prompt: str = LLM_PROMPTS["PLANNER_AGENT_PROMPT"]
 
-        # Add useer ltm to system prompt
-        ltm = "\n" + ltm
-        system_prompt = Template(system_prompt).substitute(basic_user_information=ltm)
+        # Add user ltm to system prompt
+        # ltm = "\n" + ltm
+        # system_prompt = Template(system_prompt).substitute(basic_user_information=ltm)
 
         super().__init__(system_prompt=system_prompt)
         self.browser_agent = BrowserNavAgent(self)
@@ -39,8 +38,29 @@ class PlannerAgent(BaseAgent):
 
     async def receive_browser_message(self, message: str):
         print("recieved browser message")
+        screenshot = await get_screenshot()
         processed_helper_response = await self.generate_reply(
-            [{"role": "user", "content": f"Helper response: {message}"}],
+            [
+                {
+                    "role": "user",
+                    "content": [
+                        {
+                            "type": "text",
+                            "text": f"Helper response: {message} \nHere is a screenshot of the current browser page",
+                        },
+                        {
+                            "type": "image_url",
+                            "image_url": {"url": f"{screenshot}"},
+                        },
+                        # {
+                        #     "type": "image_url",
+                        #     "image_url": {
+                        #         "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg"
+                        #     },
+                        # },
+                    ],
+                }
+            ],
             self.browser_agent,
         )
 

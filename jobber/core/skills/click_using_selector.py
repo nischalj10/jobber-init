@@ -18,7 +18,7 @@ from jobber.utils.logger import logger
 async def click(
     selector: Annotated[
         str,
-        "The properly formed query selector string to identify the element for the click action (e.g. [mmid='114']). When \"mmid\" attribute is present, use it for the query selector.",
+        "The properly formed query selector string to identify the element for the click action (e.g. [mmid='114']). When \"mmid\" attribute is present, use it for the query selector. mmid will always be a number",
     ],
     wait_before_execution: Annotated[
         float,
@@ -236,6 +236,9 @@ async def perform_javascript_click(page: Page, selector: str):
             // If the element is a link, make it open in the same tab
             if (element.tagName.toLowerCase() === "a") {
                 element.target = "_self";
+                // #TODO: Consider removing this in the future if it causes issues with intended new tab behavior
+                element.removeAttribute('target');
+                element.removeAttribute('rel');
             }
             let ariaExpandedBeforeClick = element.getAttribute('aria-expanded');
             element.click();

@@ -8,7 +8,7 @@ async def upload_file(
     # label: Annotated[str, "Label for the element on which upload should happen"],
     selector: Annotated[
         str,
-        "The properly formed query selector string to identify the file input #element (e.g. [mmid='114']). When \"mmid\" attribute is present, use it for #the query selector.",
+        "The properly formed query selector string to identify the file input element (e.g. [mmid='114']). When \"mmid\" attribute is present, use it for the query selector. mmid will always be a number",
     ],
     file_path: Annotated[str, "Path on the local system for the file to be uploaded"],
 ) -> Annotated[str, "A meesage indicating if the file uplaod was successful"]:

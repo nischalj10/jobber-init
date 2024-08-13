@@ -15,7 +15,6 @@ from jobber.core.skills.press_key_combination import press_key_combination
 from jobber.utils.dom_helper import get_element_outer_html
 from jobber.utils.dom_mutation_observer import subscribe, unsubscribe
 from jobber.utils.logger import logger
-from jobber.utils.ui_messagetype import MessageType
 
 
 @dataclass
@@ -63,21 +62,32 @@ async def custom_fill_element(page: Page, selector: str, text_to_enter: str):
         relies on these events being fired, additional steps may be needed to simulate them.
     """
     selector = f"{selector}"  # Ensures the selector is treated as a string
-    await page.evaluate(
-        """(inputParams) => {
-        const selector = inputParams.selector;
-        let text_to_enter = inputParams.text_to_enter;
-        text_to_enter = text_to_enter.trim();
-        document.querySelector(selector).value = text_to_enter;
-    }""",
-        {"selector": selector, "text_to_enter": text_to_enter},
-    )
+    try:
+        result = await page.evaluate(
+            """(inputParams) => {
+            const selector = inputParams.selector;
+            let text_to_enter = inputParams.text_to_enter;
+            text_to_enter = text_to_enter.trim();
+            const element = document.querySelector(selector);
+            if (!element) {
+                throw new Error(`Element not found: ${selector}`);
+            }
+            element.value = text_to_enter;
+            return `Value set for ${selector}`;
+        }""",
+            {"selector": selector, "text_to_enter": text_to_enter},
+        )
+        logger.debug(f"custom_fill_element result: {result}")
+    except Exception as e:
+        logger.error(f"Error in custom_fill_element: {str(e)}")
+        logger.error(f"Selector: {selector}, Text: {text_to_enter}")
+        raise
 
 
 async def entertext(
     entry: Annotated[
         EnterTextEntry,
-        "An object containing 'query_selector' (DOM selector query using mmid attribute e.g. [mmid='114']) and 'text' (text to enter on the element).",
+        "An object containing 'query_selector' (DOM selector query using mmid attribute e.g. [mmid='114']) and 'text' (text to enter on the element). mmid will always be a number",
     ],
 ) -> Annotated[str, "Explanation of the outcome of this operation."]:
     """
@@ -105,6 +115,7 @@ async def entertext(
         - If no active page is found, an error message is returned.
         - The function internally calls the 'do_entertext' function to perform the text entry operation.
         - The 'do_entertext' function applies a pulsating border effect to the target element during the operation.
+        - The function first clears any existing text in the input field before entering the new text.
         - The 'use_keyboard_fill' parameter in 'do_entertext' determines whether to simulate keyboard typing or not.
         - If 'use_keyboard_fill' is set to True, the function uses the 'page.keyboard.type' method to enter the text.
         - If 'use_keyboard_fill' is set to False, the function uses the 'custom_fill_element' method to enter the text.
@@ -133,6 +144,8 @@ async def entertext(
 
     subscribe(detect_dom_changes)
 
+    # Clear existing text before entering new text
+    await page.evaluate(f"document.querySelector('{query_selector}').value = '';")
     result = await do_entertext(page, query_selector, text_to_enter)
     await asyncio.sleep(
         0.1
@@ -141,9 +154,6 @@ async def entertext(
 
     await browser_manager.take_screenshots(f"{function_name}_end", page)
 
-    # await browser_manager.notify_user(
-    #     result["summary_message"], message_type=MessageType.ACTION
-    # )
     if dom_changes_detected:
         return f"{result['detailed_message']}.\n As a consequence of this action, new elements have appeared in view: {dom_changes_detected}. This means that the action of entering text {text_to_enter} is not yet executed and needs further interaction. Get all_fields DOM to complete the interaction."
     return result["detailed_message"]
