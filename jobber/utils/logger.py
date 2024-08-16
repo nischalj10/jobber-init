@@ -10,16 +10,15 @@ os.makedirs(log_directory, exist_ok=True)
 logging.basicConfig(
     level=logging.DEBUG,
     format="[%(asctime)s] %(levelname)s {%(filename)s:%(lineno)d} - %(message)s",
-    handlers=[
-        logging.FileHandler(os.path.join(log_directory, "app.log")),
-    ],
-    force=True,
 )
 
-# Disable output to console
-logging.getLogger().removeHandler(logging.getLogger().handlers[0])
+# Remove all handlers from the root logger
+for handler in logging.root.handlers[:]:
+    logging.root.removeHandler(handler)
 
 logger = logging.getLogger(__name__)
+logger.addHandler(logging.FileHandler(os.path.join(log_directory, "app.log")))
+logger.setLevel(logging.INFO)
 
 # logging.getLogger("httpcore").setLevel(logging.WARNING)
 # logging.getLogger("httpx").setLevel(logging.WARNING)

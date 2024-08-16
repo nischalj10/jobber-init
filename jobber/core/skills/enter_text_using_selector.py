@@ -8,7 +8,7 @@ from typing import (
 )
 
 from playwright.async_api import Page
-from typing_extensions import Annotated
+from typing_extensions import Annotated, Union
 
 from jobber.core.playwright_manager import PlaywrightManager
 from jobber.core.skills.press_key_combination import press_key_combination
@@ -86,7 +86,7 @@ async def custom_fill_element(page: Page, selector: str, text_to_enter: str):
 
 async def entertext(
     entry: Annotated[
-        EnterTextEntry,
+        Union[EnterTextEntry, Dict[str, str]],
         "An object containing 'query_selector' (DOM selector query using mmid attribute e.g. [mmid='114']) and 'text' (text to enter on the element). mmid will always be a number",
     ],
 ) -> Annotated[str, "Explanation of the outcome of this operation."]:
@@ -121,8 +121,24 @@ async def entertext(
         - If 'use_keyboard_fill' is set to False, the function uses the 'custom_fill_element' method to enter the text.
     """
     logger.info(f"Entering text: {entry}")
-    query_selector: str = entry["query_selector"]
-    text_to_enter: str = entry["text"]
+
+    if isinstance(entry, dict):
+        query_selector: str = entry["query_selector"]
+        text_to_enter: str = entry["text"]
+    elif isinstance(entry, EnterTextEntry):
+        query_selector: str = entry.query_selector
+        text_to_enter: str = entry.text
+    else:
+        raise ValueError(
+            "Invalid input type for 'entry'. Expected EnterTextEntry or dict."
+        )
+
+    if not isinstance(query_selector, str) or not isinstance(text_to_enter, str):
+        raise ValueError("query_selector and text must be strings")
+
+    # logger.info(
+    #     f"######### Debug: query_selector={query_selector}, text_to_enter={text_to_enter}"
+    # )
 
     # Create and use the PlaywrightManager
     browser_manager = PlaywrightManager(browser_type="chromium", headless=False)
@@ -145,8 +161,28 @@ async def entertext(
     subscribe(detect_dom_changes)
 
     # Clear existing text before entering new text
-    await page.evaluate(f"document.querySelector('{query_selector}').value = '';")
+    # await page.evaluate(f"document.querySelector('{query_selector}').value = '';")
+    # logger.info(
+    #     f"######### About to page.evaluate: selector={query_selector}, text={text_to_enter}"
+    # )
+    await page.evaluate(
+        """
+        (selector) => {
+            const element = document.querySelector(selector);
+            if (element) {
+                element.value = '';
+            } else {
+                console.error('Element not found:', selector);
+            }
+        }
+        """,
+        query_selector,
+    )
+    # logger.info(
+    #     f"######### About to call do_entertext with: selector={query_selector}, text={text_to_enter}"
+    # )
     result = await do_entertext(page, query_selector, text_to_enter)
+    # logger.info(f"#########do_entertext returned: {result}")
     await asyncio.sleep(
         0.1
     )  # sleep for 100ms to allow the mutation observer to detect changes
@@ -188,15 +224,13 @@ async def do_entertext(
         - If 'use_keyboard_fill' is set to False, the function uses the 'custom_fill_element' method to enter the text.
     """
     try:
-        logger.debug(f"Looking for selector {selector} to enter text: {text_to_enter}")
-
         elem = await page.query_selector(selector)
 
         if elem is None:
             error = f"Error: Selector {selector} not found. Unable to continue."
             return {"summary_message": error, "detailed_message": error}
 
-        logger.info(f"Found selector {selector} to enter text")
+        # logger.info(f"######### Found selector {selector} to enter text")
         element_outer_html = await get_element_outer_html(elem, page)
 
         if use_keyboard_fill:
@@ -224,6 +258,7 @@ async def do_entertext(
     except Exception as e:
         traceback.print_exc()
         error = f"Error entering text in selector {selector}."
+        # logger.info("Error in do_entertext", error)
         return {"summary_message": error, "detailed_message": f"{error} Error: {e}"}
 
 

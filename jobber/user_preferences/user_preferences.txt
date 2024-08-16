@@ -1,18 +1,25 @@
 Personal Info:
-First Name: Naman
+First Name: Nischal
 Last Name: Jain
-Date of birth: 10/10/2010
+Date of birth: 09/10/2001
 Pronouns: He/Him
-Email: naman@gmail.com
-Expeted Salary: 200000
-Occupation: Software Engineer
-Experience - Junior
-Address: 49 Featherstone Street, LONDON, EC1Y 8SY, UNITED KINGDOM
-Email: naman@gmail.com
-Phone Number: 123-456-7890
+Email: nischalj10@gmail.com
+Expeted Salary: 5000000
+Occupation: Data Engineer
+Experience - Mid
+Address: Indiranagr, Bengaluru
+Phone Number: 6350317505
+LinkedIn - https://linkedin.com/in/nischalj10
+DO NOT UPLOAD CUSTOM RESUME IF RESUME IS ALREADY PRESENT. JUST SELECT DEFAULT RESUME. 
+DO NOT CONFIRM DETAILS FROM ME OR THE helper agent. Autonomously decide. Default Selected options are always good to go.
+FOR EVERY KIND OF EXPERIENCE ASKED IN CASE OF JOB Applications - Say I have 4 years of experience in it. You have my authority.
 Here are some of my preferences:
 Shopping Preferences: www.amazon.com
 Favorite news source: www.thehindu.com
 Favorite flight booking site to use with every flight related query: https://www.google.com/travel/flightsno
-Job Apply Website = https://jobs.lever.co/leverdemo-8/45d39614-464a-4b62-a5cd-8683ce4fb80a/apply
-File to Upload = /Users/nischalj10/Downloads/July.pdf
+Resume File to Upload Path = /Users/namanjain/Downloads/DummyResume.pdf
+My best project - checkout headless-ollama on google
+I am confortable commuting to office.
+I have 4 years of experience in TypeScript, Node Js, Nextjs, Python, Django and evey other field of technology.
+I have work authorization for working in USA.
+i have experience in cloud infrastructure, data warheouses.

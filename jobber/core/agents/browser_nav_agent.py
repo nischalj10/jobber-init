@@ -14,7 +14,6 @@ from jobber.core.skills.press_key_combination import press_key_combination
 from jobber.core.skills.upload_file import upload_file
 
 
-
 class BrowserNavAgent(BaseAgent):
     def __init__(self, planner_agent: BaseAgent):
         system_prompt = LLM_PROMPTS["BROWSER_AGENT_PROMPT"]

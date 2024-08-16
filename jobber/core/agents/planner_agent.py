@@ -1,3 +1,6 @@
+from datetime import datetime
+from string import Template
+
 from jobber.core.agents.base import BaseAgent
 from jobber.core.agents.browser_nav_agent import BrowserNavAgent
 from jobber.core.memory import ltm
@@ -7,12 +10,19 @@ from jobber.core.skills.get_screenshot import get_screenshot
 
 class PlannerAgent(BaseAgent):
     def __init__(self):
-        # ltm = self.__get_ltm()
+        ltm = self.__get_ltm()
         system_prompt: str = LLM_PROMPTS["PLANNER_AGENT_PROMPT"]
 
         # Add user ltm to system prompt
-        # ltm = "\n" + ltm
-        # system_prompt = Template(system_prompt).substitute(basic_user_information=ltm)
+        ltm = "\n" + ltm
+        system_prompt = Template(system_prompt).substitute(basic_user_information=ltm)
+
+        # Add today's day & date to the system prompt
+        today = datetime.now()
+        today_date = today.strftime("%d/%m/%Y")
+        weekday = today.strftime("%A")
+        system_prompt += f"\nToday's date is: {today_date}"
+        system_prompt += f"\nCurrent weekday is: {weekday}"
 
         super().__init__(system_prompt=system_prompt)
         self.browser_agent = BrowserNavAgent(self)
@@ -28,13 +38,13 @@ class PlannerAgent(BaseAgent):
             # the browser navigator has ##TERMINATE TASK## in its response, it will self termiate and call the receive_browser_message function defined below
             await self.browser_agent.process_query(response["content"])
 
-            print("jai shree ram")
+            # processing of the entire task done
+            print("jai shree ram, exiting")
 
-            response = await self.receive_browser_message(response["content"])
+            final_response = "Task done successfully"
 
-        # processing of the entire task done
-        self.reset_messages()
-        return response["content"]
+            self.reset_messages()
+            return final_response
 
     async def receive_browser_message(self, message: str):
         print("recieved browser message")
@@ -52,13 +62,8 @@ class PlannerAgent(BaseAgent):
                             "type": "image_url",
                             "image_url": {"url": f"{screenshot}"},
                         },
-                        # {
-                        #     "type": "image_url",
-                        #     "image_url": {
-                        #         "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg"
-                        #     },
-                        # },
                     ],
+                    # "content": f"Helper response: {message}",
                 }
             ],
             self.browser_agent,

@@ -38,7 +38,9 @@ async def upload_file(
     try:
         await page.locator(selector).set_input_files(file_path)
         # await page.get_by_label(label).set_input_files(file_path)
-        logger.info("File upload was successful")
+        logger.info(
+            "File upload was successful. I can confirm it. Please proceed ahead with next step."
+        )
     except Exception as e:
         logger.error(f"Failed to upload file: {e}")
         return f"File upload failed {e}"

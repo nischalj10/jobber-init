@@ -26,7 +26,7 @@ class BaseAgent:
         if tools:
             self._initialize_tools(tools)
             self.llm_config.update({"tools": self.tools_list, "tool_choice": "auto"})
-        print("model", self.llm_config)
+        # print("model", self.llm_config)
 
     def _initialize_tools(self, tools: List[Tuple[Callable, str]]):
         for function, description in tools:
@@ -41,11 +41,11 @@ class BaseAgent:
         self.messages.extend(messages)
         processed_messages = self._process_messages(self.messages)
         self.messages = processed_messages
-        logger.info("processed messages", processed_messages)
 
         while True:
             litellm.logging = False
             litellm.success_callback = ["langsmith"]
+            # litellm.set_verbose = True
             try:
                 response = litellm.completion(
                     messages=self.messages,
@@ -59,10 +59,10 @@ class BaseAgent:
                 print(f"should_retry: {should_retry}")
 
             response_message = response.choices[0].message
-            print("response", response_message)
             tool_calls = response_message.tool_calls
 
             if tool_calls:
+                print("^^^^^^^^^^ tolls callss")
                 self.messages.append(response_message)
                 for tool_call in tool_calls:
                     function_name = tool_call.function.name
@@ -78,7 +78,9 @@ class BaseAgent:
                                 "content": str(function_response),
                             }
                         )
-                    except:
+                        print("^^^^^^^^^^ tool called")
+                    except Exception as e:
+                        logger.info(f"***** Error occurred: {str(e)}")
                         self.messages.append(
                             {
                                 "tool_call_id": tool_call.id,
@@ -90,6 +92,7 @@ class BaseAgent:
                                 ),
                             }
                         )
+                print("^^^^^calling LLM again with function response")
                 continue
 
             print("uiewbeiu")
@@ -152,6 +155,7 @@ class BaseAgent:
                                 "image_url": {"url": f"{screenshot}"},
                             },
                         ],
+                        # "content": query,
                     }
                 ],
                 None,
